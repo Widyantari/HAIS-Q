@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAIS-Q — Pengukuran Kesadaran Keamanan Informasi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============ SECTION 1: WELCOME ============ -->
+  <section id="section-welcome" class="section active">
+    <div class="container narrow">
+      <header class="hero">
+        <div class="eyebrow">Perangkat Penilaian</div>
+        <h1 class="display">Kesadaran Keamanan <em>Informasi</em></h1>
+        <p class="lead">
+          Kuesioner ini mengidentifikasi tingkat kesadaran Anda terhadap keamanan
+          informasi, mencakup dimensi <strong>pengetahuan</strong>,
+          <strong>sikap</strong>, dan <strong>perilaku</strong> dalam
+          penggunaan perangkat digital sehari-hari.
+        </p>
+      </header>
+
+      <div class="info-grid">
+        <div class="info-cell">
+          <div class="info-value">9</div>
+          <div class="info-label">Fokus Area</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-value">34</div>
+          <div class="info-label">Sub Area</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-value">102</div>
+          <div class="info-label">Pertanyaan</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-value">~15</div>
+          <div class="info-label">Menit</div>
+        </div>
+      </div>
+
+      <div class="notice">
+        <strong>Kerahasiaan.</strong> Seluruh data yang Anda berikan dijaga
+        kerahasiaannya dan hanya digunakan untuk perhitungan skor kesadaran
+        keamanan informasi. Hasil akan ditampilkan segera setelah Anda
+        menyelesaikan kuesioner.
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" onclick="goToSection('demographics')">
+          Mulai Kuesioner <span class="arrow">→</span>
+        </button>
+      </div>
+
+      <footer class="page-footer">
+        <div class="footer-line">Berbasis instrumen HAIS-Q · Skala Likert 1–5 · Kategorisasi NJI (Sugiyono, 2013)</div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2: DEMOGRAPHICS ============ -->
+  <section id="section-demographics" class="section">
+    <div class="container narrow">
+      <div class="section-header">
+        <div class="section-label">Bagian 1 dari 2</div>
+        <h2 class="page-title">Identitas Responden</h2>
+        <p class="page-sub">Data ini digunakan untuk keperluan analisis dan tidak akan dibagikan.</p>
+      </div>
+
+      <div class="form-grid">
+        <label class="field span-2">
+          <span class="field-label">Nama Lengkap</span>
+          <input type="text" id="dg-nama" required>
+        </label>
+
+        <label class="field span-2">
+          <span class="field-label">Email</span>
+          <input type="email" id="dg-email" placeholder="nama@contoh.com" required>
+        </label>
+
+        <label class="field">
+          <span class="field-label">Jenis Kelamin</span>
+          <select id="dg-gender" required>
+            <option value="">Pilih…</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span class="field-label">Usia</span>
+          <input type="number" id="dg-usia" min="10" max="100" required>
+        </label>
+
+        <label class="field span-2">
+          <span class="field-label">Profesi</span>
+          <input type="text" id="dg-profesi" placeholder="mis. Mahasiswa, Karyawan, Dosen" required>
+        </label>
+
+        <label class="field">
+          <span class="field-label">Provinsi</span>
+          <input type="text" id="dg-provinsi" required>
+        </label>
+
+        <label class="field">
+          <span class="field-label">Kota / Kabupaten</span>
+          <input type="text" id="dg-kota" required>
+        </label>
+
+        <label class="field span-2">
+          <span class="field-label">Pendidikan Terakhir</span>
+          <select id="dg-pendidikan" required>
+            <option value="">Pilih…</option>
+            <option value="SD">SD</option>
+            <option value="SMP">SMP</option>
+            <option value="SMA/SMK">SMA/SMK</option>
+            <option value="Diploma">Diploma</option>
+            <option value="S1">S1</option>
+            <option value="S2">S2</option>
+            <option value="S3">S3</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="actions between">
+        <button class="btn ghost" onclick="goToSection('welcome')">
+          <span class="arrow-back">←</span> Kembali
+        </button>
+        <button class="btn primary" onclick="submitDemographics()">
+          Lanjut ke Pertanyaan <span class="arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: QUESTIONNAIRE ============ -->
+  <section id="section-questionnaire" class="section">
+    <div class="q-topbar">
+      <div class="container">
+        <div class="topbar-row">
+          <div class="topbar-info">
+            <div class="topbar-label" id="q-focus-code">—</div>
+            <div class="topbar-title" id="q-focus-name">—</div>
+          </div>
+          <div class="topbar-progress">
+            <div class="progress-text">
+              Fokus Area <span id="q-current-idx">0</span> dari <span id="q-total-idx">9</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="q-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="q-scale-legend">
+        <div class="scale-legend-title">Skala Penilaian</div>
+        <div class="scale-legend-items">
+          <span><b>1</b> Sangat Tidak Setuju</span>
+          <span><b>2</b> Tidak Setuju</span>
+          <span><b>3</b> Netral</span>
+          <span><b>4</b> Setuju</span>
+          <span><b>5</b> Sangat Setuju</span>
+        </div>
+      </div>
+
+      <div id="q-focus-container">
+        <!-- populated by JS -->
+      </div>
+
+      <div class="actions between q-nav">
+        <button class="btn ghost" id="q-prev-btn" onclick="prevFocus()">
+          <span class="arrow-back">←</span> Sebelumnya
+        </button>
+        <button class="btn primary" id="q-next-btn" onclick="nextFocus()">
+          Selanjutnya <span class="arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4: RESULTS ============ -->
+  <section id="section-results" class="section">
+    <div class="container">
+      <div class="results-header">
+        <div class="eyebrow">Hasil Penilaian</div>
+        <h2 class="display" id="result-name-greeting">Terima kasih</h2>
+        <p class="page-sub">Berikut adalah rincian skor kesadaran keamanan informasi Anda berdasarkan Nilai Jenjang Interval (NJI).</p>
+      </div>
+
+      <!-- Total score card -->
+      <div class="total-card" id="total-card">
+        <div class="total-card-inner">
+          <div class="total-label">Total Skor Kesadaran Keamanan Informasi</div>
+          <div class="total-score" id="total-score">—</div>
+          <div class="total-category" id="total-category">—</div>
+          <div class="total-desc" id="total-desc">—</div>
+        </div>
+      </div>
+
+      <!-- Per-focus-area breakdown -->
+      <div class="results-section-title">
+        <h3>Rincian per Fokus Area</h3>
+        <p>Skor dihitung sebagai rata-rata dari dimensi Pengetahuan, Sikap, dan Perilaku pada tiap fokus area.</p>
+      </div>
+
+      <div class="focus-results" id="focus-results">
+        <!-- populated by JS -->
+      </div>
+
+      <!-- KAB breakdown -->
+      <div class="results-section-title">
+        <h3>Rincian per Dimensi</h3>
+        <p>Perbandingan skor berdasarkan Pengetahuan (K), Sikap (A), dan Perilaku (B).</p>
+      </div>
+      <div class="kab-grid" id="kab-grid">
+        <!-- populated by JS -->
+      </div>
+
+      <!-- NJI reference table -->
+      <div class="results-section-title">
+        <h3>Referensi Kategorisasi (NJI)</h3>
+      </div>
+      <div class="nji-table">
+        <div class="nji-row header-row">
+          <div>Skala Minimal</div>
+          <div>Skala Maksimal</div>
+          <div>Kategori</div>
+        </div>
+        <div class="nji-row" style="--c: #4CAF50"><div>4,21</div><div>5,00</div><div>Sangat Baik</div></div>
+        <div class="nji-row" style="--c: #8BC34A"><div>3,41</div><div>4,20</div><div>Baik</div></div>
+        <div class="nji-row" style="--c: #FFC107"><div>2,61</div><div>3,40</div><div>Kurang Baik</div></div>
+        <div class="nji-row" style="--c: #FF9800"><div>1,81</div><div>2,60</div><div>Tidak Baik</div></div>
+        <div class="nji-row" style="--c: #F44336"><div>1,00</div><div>1,80</div><div>Sangat Tidak Baik</div></div>
+      </div>
+
+      <div class="actions center no-print">
+        <button class="btn ghost" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
+        <button class="btn ghost" onclick="downloadJSON()">💾 Simpan Hasil (JSON)</button>
+        <button class="btn primary" onclick="restart()">Ulangi Kuesioner</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
