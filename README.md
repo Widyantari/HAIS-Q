@@ -45,34 +45,6 @@ di fokus area tersebut.
 
 ---
 
-## ✏️ Cara edit pertanyaan
-
-Buka `data.js`. Strukturnya:
-
-```javascript
-{
-  code: "PM",                    // kode singkat fokus area
-  name: "Manajemen Password",    // nama fokus area
-  subAreas: [
-    {
-      name: "Menggunakan password yang sama",
-      questions: [
-        { dim: "K", text: "…", reverse: true },   // Pengetahuan
-        { dim: "A", text: "…", reverse: true },   // Sikap
-        { dim: "B", text: "…", reverse: false }   // Perilaku
-      ]
-    },
-    // …sub area lain
-  ]
-}
-```
-
-- `dim`: `K` (Knowledge/Pengetahuan), `A` (Attitude/Sikap), `B` (Behaviour/Perilaku)
-- `reverse`: `true` untuk pertanyaan yang dibalik penilaiannya, `false` jika normal
-
-Kalau nambah/ubah pertanyaan, cukup save file dan reload browser. Ga perlu build.
-
----
 
 ## 💾 Ekspor hasil
 
@@ -85,21 +57,8 @@ Di halaman hasil ada tiga tombol:
 
 ---
 
-## 🌐 Deploy ke internet (opsional)
-
-Kalau nanti mau hosting biar bisa diakses orang lain, gratis pakai:
-
-- **GitHub Pages**: push ke repo GitHub, aktifkan Pages di Settings
-- **Netlify Drop**: drag folder-nya ke <https://app.netlify.com/drop>
-- **Vercel**: `vercel deploy` dari terminal
-
----
-
 ## 📖 Catatan
 
-- Data responden **tidak disimpan di server** — semua tetap di browser mereka.
-  Kalau butuh mengumpulkan data banyak responden, mereka harus kirim JSON hasilnya
-  ke kamu, atau kamu perlu tambah backend (misalnya Google Form untuk demografi
-  + tombol submit ke Google Sheet).
+- Data responden **tidak disimpan di server** 
 - Instrumen HAIS-Q berdasarkan Parsons et al. (2017), dengan kategorisasi NJI
   merujuk pada Sugiyono (2013).
