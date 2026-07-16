@@ -4,9 +4,6 @@ Aplikasi web sederhana untuk mengukur tingkat kesadaran keamanan informasi
 menggunakan instrumen HAIS-Q (9 fokus area, 34 sub area, 102 pertanyaan)
 dengan kategorisasi Nilai Jenjang Interval (NJI).
 
-Tidak butuh backend, tidak butuh database, tidak butuh install apa-apa.
-Cukup HTML + CSS + JavaScript.
-
 ---
 
 ## 📁 Struktur file
@@ -19,41 +16,6 @@ haisq-app/
 ├── app.js       ← logic aplikasi (navigasi, scoring, hasil)
 └── README.md    ← file ini
 ```
-
----
-
-## 🚀 Cara menjalankan (2 opsi)
-
-### Opsi A — Paling cepat: buka langsung di browser
-
-1. Extract semua file ke satu folder (misal `haisq-app/`).
-2. Klik dua kali `index.html` → langsung buka di browser default kamu.
-
-Selesai. Ga perlu install apa-apa.
-
-### Opsi B — Pakai VS Code + Live Server (recommended untuk development)
-
-Kelebihan: browser auto-reload setiap kali kamu save file — enak buat editing.
-
-1. **Install VS Code** kalau belum: <https://code.visualstudio.com/>
-
-2. **Install extension "Live Server"**:
-   - Buka VS Code
-   - Klik icon Extensions di sidebar (atau tekan `Ctrl+Shift+X`)
-   - Cari `Live Server` (author: Ritwick Dey)
-   - Klik **Install**
-
-3. **Buka folder projectnya di VS Code**:
-   - `File` → `Open Folder…` → pilih folder `haisq-app/`
-
-4. **Jalankan**:
-   - Klik kanan pada `index.html` di file explorer sidebar
-   - Pilih **"Open with Live Server"**
-   - Browser akan otomatis kebuka di `http://127.0.0.1:5500/index.html`
-
-   Alternatif: tekan tombol **"Go Live"** di pojok kanan bawah VS Code.
-
-Setiap kali kamu edit file dan save (`Ctrl+S`), browser reload otomatis.
 
 ---
 
