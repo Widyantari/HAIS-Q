@@ -10,11 +10,11 @@ dengan kategorisasi Nilai Jenjang Interval (NJI).
 
 ```
 haisq-app/
-├── index.html   ← halaman utama
-├── styles.css   ← styling
-├── data.js      ← semua pertanyaan & konfigurasi (ini yang paling sering diedit)
-├── app.js       ← logic aplikasi (navigasi, scoring, hasil)
-└── README.md    ← file ini
+├── index.html   
+├── styles.css   
+├── data.js      
+├── app.js       
+└── README.md    
 ```
 
 ---
