@@ -1,6 +1,6 @@
 /**
- * HAIS-Q Kuesioner Data
- * 9 Fokus Area, 34 Sub Area, 102 Pertanyaan (K/A/B per sub-area)
+ * HAIS-Q Kuesioner Data — VERSI TERBARU
+ * 9 Fokus Area, 47 Sub Area, 141 Pertanyaan (K/A/B per sub-area)
  *
  * Field "reverse: true" berarti pertanyaan reverse-scored:
  *   skor sebenarnya = 6 - jawaban_user
@@ -56,11 +56,19 @@ window.HAISQ_DATA = {
           ]
         },
         {
-          name: "Menggunakan password bawaan dari sistem",
+          name: "Menyimpan catatan password",
           questions: [
-            { dim: "K", text: "Saya boleh menggunakan password bawaan yang diberikan aplikasi tanpa mengubahnya (contoh: password bawaan seperti 123, admin123).", reverse: true },
-            { dim: "A", text: "Menggunakan password bawaan yang ditetapkan oleh sistem adalah hal yang berisiko (contoh: password bawaan seperti 123, admin123).", reverse: false },
-            { dim: "B", text: "Saya selalu mengganti password bawaan dari aplikasi dengan password baru yang lebih kuat secepat mungkin.", reverse: false }
+            { dim: "K", text: "Saya boleh mencatat password akun atau aplikasi agar tidak lupa (menyimpan password di whatsapp, email, telegram, browser tanpa pengamanan, serta sticky notes di atas meja kantor).", reverse: true },
+            { dim: "A", text: "Menyimpan password akun atau aplikasi adalah hal yang berisiko (menyimpan password di whatsapp, email, telegram, browser tanpa pengamanan, serta sticky notes di atas meja kantor).", reverse: false },
+            { dim: "B", text: "Saya tidak pernah menyimpan password akun atau aplikasi saya (menyimpan password di whatsapp, email, telegram, browser tanpa pengamanan, serta sticky notes di atas meja kantor).", reverse: false }
+          ]
+        },
+        {
+          name: "Mengganti password secara berkala",
+          questions: [
+            { dim: "K", text: "Saya mengganti password akun secara berkala.", reverse: false },
+            { dim: "A", text: "Tidak perlu mengganti password akun secara berkala adalah hal yang aman.", reverse: true },
+            { dim: "B", text: "Saya mengganti password saya secara berkala, misalnya dalam satu bulan sekali atau dua bulan sekali.", reverse: false }
           ]
         }
       ]
@@ -94,11 +102,11 @@ window.HAISQ_DATA = {
           ]
         },
         {
-          name: "Logout akun email dari perangkat bersama",
+          name: "Menggunakan akun kantor untuk kepentingan pribadi",
           questions: [
-            { dim: "K", text: "Tidak melogout akun email di perangkat bersama setelah selesai menggunakannya adalah hal yang aman (contoh: tidak logout dari gmail pribadi di komputer milik kantor/kampus saat jam pulang).", reverse: true },
-            { dim: "A", text: "Tetap login pada akun email di perangkat bersama atau publik adalah hal yang berisiko (contoh: tetap login gmail pribadi dari komputer milik kantor/kampus ketika saat pulang).", reverse: false },
-            { dim: "B", text: "Saya selalu logout dari akun email setelah selesai menggunakan perangkat bersama atau publik (contoh: logout gmail pribadi dari komputer milik kantor/kampus).", reverse: false }
+            { dim: "K", text: "Saya tidak diperbolehkan menggunakan akun kerja saya untuk kepentingan pribadi (login media sosial dengan email kantor).", reverse: false },
+            { dim: "A", text: "Menggunakan akun milik kantor untuk memudahkan urusan pribadi adalah hal yang aman.", reverse: true },
+            { dim: "B", text: "Saya tidak menggunakan akun kerja untuk menyelesaikan hal pribadi yang tidak ada urusannya dengan kantor.", reverse: false }
           ]
         }
       ]
@@ -132,11 +140,35 @@ window.HAISQ_DATA = {
           ]
         },
         {
-          name: "Menginstall aplikasi bajakan/tidak berlisensi dari internet",
+          name: "Menginstall aplikasi bajakan / tidak berlisensi dari internet",
           questions: [
-            { dim: "K", text: "Saya diperbolehkan menginstal aplikasi (software) apa pun di perangkat pribadi selama membantu pekerjaan (tidak peduli bajakan atau tidak).", reverse: true },
-            { dim: "A", text: "Menginstal aplikasi (software) bajakan di perangkat pribadi adalah hal yang berisiko.", reverse: false },
-            { dim: "B", text: "Saya hanya menginstal aplikasi (software) yang sudah berlisensi di perangkat pribadi.", reverse: false }
+            { dim: "K", text: "Saya diperbolehkan menginstal aplikasi dan OS apa pun di perangkat pribadi selama membantu pekerjaan (tidak peduli bajakan atau tidak).", reverse: true },
+            { dim: "A", text: "Menginstal aplikasi dan OS bajakan di perangkat pribadi adalah hal yang berisiko.", reverse: false },
+            { dim: "B", text: "Saya hanya menginstal aplikasi dan OS yang sudah berlisensi di perangkat pribadi.", reverse: false }
+          ]
+        },
+        {
+          name: "Menggunakan VPN saat bekerja menggunakan perangkat pribadi",
+          questions: [
+            { dim: "K", text: "Saat bekerja dengan perangkat milik saya pribadi (bukan laptop/komputer kantor), saya tidak perlu menyalakan VPN untuk mengakses aplikasi milik kantor saya.", reverse: true },
+            { dim: "A", text: "Penting untuk menyalakan VPN setiap kali mengakses aplikasi atau data konfidensial milik kantor saat menggunakan perangkat pribadi.", reverse: false },
+            { dim: "B", text: "Saya selalu menyalakan VPN milik kantor sebelum mengakses aplikasi kantor saat bekerja menggunakan perangkat pribadi.", reverse: false }
+          ]
+        },
+        {
+          name: "Mengupload file penting ke dalam AI",
+          questions: [
+            { dim: "K", text: "Saya tidak seharusnya memasukkan dokumen seperti foto pribadi ke dalam AI (ChatGPT, Gemini, MetaAI).", reverse: false },
+            { dim: "A", text: "Saya dapat dengan bebas mengupload dokumen dan foto apapun ke dalam AI.", reverse: true },
+            { dim: "B", text: "Saya memilih terlebih dahulu informasi apa saja yang dapat dimasukkan ke dalam AI.", reverse: false }
+          ]
+        },
+        {
+          name: "Memberikan informasi pribadi untuk mendapatkan keuntungan/kemudahan",
+          questions: [
+            { dim: "K", text: "Memberikan informasi pribadi (nama, nomor telepon, alamat, NIK, email) demi mendapatkan hadiah, diskon, WiFi gratis, atau kemudahan lain berisiko menyebabkan penyalahgunaan data seperti penipuan, spam, atau pencurian identitas.", reverse: false },
+            { dim: "A", text: "Memberikan data pribadi kepada aplikasi, undian, atau layanan tertentu tidak menjadi masalah selama saya mendapatkan keuntungan atau kemudahan dari layanan tersebut.", reverse: true },
+            { dim: "B", text: "Saya memeriksa kredibilitas pihak penerima dan kejelasan tujuan penggunaan data sebelum memberikan informasi pribadi saya di aplikasi, formulir, atau undian.", reverse: false }
           ]
         }
       ]
@@ -170,11 +202,27 @@ window.HAISQ_DATA = {
           ]
         },
         {
-          name: "Memanipulasi orang untuk melakukan sesuatu di social media",
+          name: "Social Engineering",
           questions: [
-            { dim: "K", text: "Saya boleh mengikuti instruksi dari seseorang tanpa memastikan identitasnya di social media.", reverse: true },
-            { dim: "A", text: "Memberikan informasi sensitif kepada orang lain (seperti NIK, password aplikasi, pin atm, email, nomer hp pribadi) di social media adalah hal yang berbahaya.", reverse: false },
-            { dim: "B", text: "Saya selalu memastikan identitas siapa pun yang meminta informasi pribadi (seperti NIK, password aplikasi, pin atm, email, nomer hp pribadi) sebelum memenuhinya.", reverse: false }
+            { dim: "K", text: "Saya boleh mengikuti instruksi dari seseorang tanpa memastikan identitasnya (mengikuti instruksi Pimpinan/Instansi/Lembaga tanpa memverifikasi keasliannya).", reverse: true },
+            { dim: "A", text: "Memberikan informasi sensitif kepada orang lain (seperti NIK, password aplikasi, pin ATM, email, nomor HP pribadi, serta dokumen pekerjaan) adalah hal yang berbahaya.", reverse: false },
+            { dim: "B", text: "Saya selalu memastikan identitas siapa pun yang meminta informasi pribadi (seperti NIK, password aplikasi, pin ATM, email, nomor HP pribadi, serta dokumen pekerjaan) sebelum memenuhinya.", reverse: false }
+          ]
+        },
+        {
+          name: "Mengunggah dokumen ke dalam cloud publik",
+          questions: [
+            { dim: "K", text: "Saya tidak boleh mengupload file yang pribadi dan rahasia ke dalam penyimpanan cloud publik (Google Drive dan Dropbox sharing).", reverse: false },
+            { dim: "A", text: "Saya meninjau terlebih dahulu dokumen yang akan diupload ke dalam cloud publik (Google Drive dan Dropbox sharing).", reverse: false },
+            { dim: "B", text: "Saya dapat dengan bebas mengupload dokumen apapun ke dalam cloud sharing (Google Drive dan Dropbox sharing).", reverse: true }
+          ]
+        },
+        {
+          name: "Mengikuti tren viral yang mungkin menyebabkan tersebarnya data pribadi/sensitif",
+          questions: [
+            { dim: "K", text: "Mengikuti tren viral di media sosial (seperti challenge, filter AI, kuis kepribadian, atau face-swap) yang meminta akses data pribadi dapat menyebabkan kebocoran informasi sensitif.", reverse: false },
+            { dim: "A", text: "Saya berhati-hati dalam mengikuti tren viral di media sosial yang berpotensi mengekspos data pribadi maupun informasi kedinasan.", reverse: false },
+            { dim: "B", text: "Saya mengikuti tren viral di media sosial tanpa memeriksa terlebih dahulu apakah tren tersebut berpotensi menyebarkan data pribadi/sensitif.", reverse: true }
           ]
         }
       ]
@@ -208,6 +256,14 @@ window.HAISQ_DATA = {
           ]
         },
         {
+          name: "Meminjamkan perangkat digital",
+          questions: [
+            { dim: "K", text: "Saya boleh meminjamkan akun atau perangkat komputer kantor (komputer, laptop, tablet, handphone) kepada orang lain (seperti teman/anak/saudara).", reverse: true },
+            { dim: "A", text: "Meminjamkan akun atau perangkat komputer kantor (komputer, laptop, tablet, handphone) kepada orang lain (seperti teman/anak/saudara) adalah hal yang berisiko.", reverse: false },
+            { dim: "B", text: "Saya meminjamkan akun atau perangkat komputer milik kantor (komputer, laptop, tablet, handphone) kepada orang lain (seperti teman/anak/saudara).", reverse: true }
+          ]
+        },
+        {
           name: "Mengupdate aplikasi yang sudah expired",
           questions: [
             { dim: "K", text: "Saya tidak perlu memperbarui sistem operasi (OS) dan aplikasi di perangkat pribadi jika sudah expired.", reverse: true },
@@ -216,11 +272,19 @@ window.HAISQ_DATA = {
           ]
         },
         {
-          name: "Membatasi izin aplikasi dalam mengakses media",
+          name: "Membatasi izin aplikasi atau website dalam mengakses media",
           questions: [
-            { dim: "K", text: "Saya boleh memberikan izin aplikasi untuk mengakses media, meskipun tidak berkaitan dengan fungsi aplikasi tersebut (memperbolehkan aplikasi game untuk mengakses lokasi).", reverse: true },
-            { dim: "A", text: "Mengizinkan aplikasi untuk mengakses media yang tidak diperlukan untuk fungsi aplikasi tersebut adalah hal yang berbahaya (memperbolehkan aplikasi game untuk mengakses lokasi).", reverse: false },
-            { dim: "B", text: "Saya meninjau dan membatasi izin yang saya berikan kepada aplikasi dan hanya mengizinkan yang diperlukan untuk fungsi aplikasi.", reverse: false }
+            { dim: "K", text: "Saya boleh memberikan izin aplikasi atau website untuk mengakses media, meskipun tidak berkaitan dengan fungsi aplikasi tersebut (memperbolehkan website undangan untuk mengakses kamera).", reverse: true },
+            { dim: "A", text: "Mengizinkan aplikasi atau website untuk mengakses media yang tidak diperlukan untuk fungsi aplikasi tersebut adalah hal yang berbahaya (tidak memperbolehkan website undangan untuk mengakses kamera).", reverse: false },
+            { dim: "B", text: "Saya meninjau dan membatasi izin yang saya berikan kepada aplikasi atau website (tidak memperbolehkan website undangan untuk mengakses kamera).", reverse: false }
+          ]
+        },
+        {
+          name: "Mengaktifkan screen lock",
+          questions: [
+            { dim: "K", text: "Saya memastikan bahwa layar komputer kerja saya telah dikunci dengan menggunakan password.", reverse: false },
+            { dim: "A", text: "Mematikan fitur kunci layar pada komputer kerja adalah hal yang aman.", reverse: true },
+            { dim: "B", text: "Saya selalu menggunakan fitur kunci layar untuk komputer kerja saya agar aman.", reverse: false }
           ]
         }
       ]
@@ -230,14 +294,6 @@ window.HAISQ_DATA = {
       name: "Keamanan Fisik",
       subAreas: [
         {
-          name: "Memproteksi perangkat dari ancaman fisik (lingkungan)",
-          questions: [
-            { dim: "K", text: "Ancaman fisik pada peralatan IT, seperti kebakaran atau banjir, tidak memerlukan tindakan pencegahan khusus.", reverse: true },
-            { dim: "A", text: "Ancaman fisik dan lingkungan seperti kebakaran, kerusakan air, dan sebagainya termasuk ke dalam ancaman keamanan informasi.", reverse: false },
-            { dim: "B", text: "Saya mengikuti panduan untuk melindungi peralatan (seperti laptop, komputer, tab, dan handphone) dari ancaman fisik dan lingkungan, seperti menjauhkan perangkat dari area berbahaya.", reverse: false }
-          ]
-        },
-        {
           name: "Menempati area yang aman saat bekerja",
           questions: [
             { dim: "K", text: "Saya boleh mendiskusikan mengenai pekerjaan yang sensitif di area mana pun saat di kantor maupun di luar kantor.", reverse: true },
@@ -246,11 +302,11 @@ window.HAISQ_DATA = {
           ]
         },
         {
-          name: "Meletakkan perangkat digital pribadi",
+          name: "Memberikan akses untuk masuk kepada orang yang tidak dikenal",
           questions: [
-            { dim: "K", text: "Perangkat digital (komputer, laptop, tablet, handphone) dapat diletakkan di mana saja selama terhubung dengan jaringan.", reverse: true },
-            { dim: "A", text: "Perangkat digital wajib diletakkan di tempat yang aman sehingga meminimalkan risiko diintip oleh orang lain atau kerusakan fisik.", reverse: false },
-            { dim: "B", text: "Saya memastikan perangkat digital (komputer, laptop, tablet, handphone) ditempatkan di posisi yang aman untuk mencegah dibuka atau diintip oleh orang lain.", reverse: false }
+            { dim: "K", text: "Sebagai admin, memberikan akses masuk ke sistem/jaringan/server kepada orang yang tidak dikenal atau tanpa verifikasi identitas dan otorisasi resmi dapat menyebabkan penyusupan, kebocoran data, atau serangan siber.", reverse: false },
+            { dim: "A", text: "Memberikan akses masuk kepada orang yang mengaku dari pihak internal maupun eksternal tanpa verifikasi identitas adalah hal yang wajar dilakukan demi kecepatan pekerjaan.", reverse: true },
+            { dim: "B", text: "Saya memverifikasi identitas terlebih dahulu sebelum memberikan akses masuk ke sistem/jaringan/server yang saya kelola.", reverse: false }
           ]
         },
         {
@@ -259,6 +315,22 @@ window.HAISQ_DATA = {
             { dim: "K", text: "Area tanpa kamera pengawas (CCTV) dan semacamnya bukanlah risiko keamanan.", reverse: true },
             { dim: "A", text: "Penting untuk lebih waspada dan melaporkan aktivitas mencurigakan di area yang kurang memiliki pengawasan yang memadai (tidak memiliki CCTV).", reverse: false },
             { dim: "B", text: "Saya melaporkan aktivitas mencurigakan yang dilakukan individu atau kelompok di area terbatas yang tidak memiliki CCTV.", reverse: false }
+          ]
+        },
+        {
+          name: "Menggunakan antivirus",
+          questions: [
+            { dim: "K", text: "Mengaktifkan antivirus dan selalu memperbaruinya pada perangkat kerja penting untuk melindungi data dari malware, ransomware, dan program berbahaya lainnya.", reverse: false },
+            { dim: "A", text: "Antivirus harus selalu diaktifkan pada perangkat kerja, meskipun terkadang dianggap memperlambat kinerja komputer.", reverse: false },
+            { dim: "B", text: "Saya menonaktifkan antivirus di perangkat kerja ketika dirasa mengganggu kinerja komputer.", reverse: true }
+          ]
+        },
+        {
+          name: "Mengaktifkan update/patch keamanan",
+          questions: [
+            { dim: "K", text: "Memasang pembaruan (update/patch) keamanan sistem operasi dan aplikasi penting untuk menutup celah keamanan yang dapat dimanfaatkan penyerang.", reverse: false },
+            { dim: "A", text: "Pembaruan keamanan sistem dan aplikasi harus segera dipasang meskipun mengganggu pekerjaan untuk sementara waktu.", reverse: false },
+            { dim: "B", text: "Saya menunda atau mengabaikan notifikasi pembaruan (update/patch) keamanan pada perangkat kerja saya.", reverse: true }
           ]
         }
       ]
@@ -292,11 +364,35 @@ window.HAISQ_DATA = {
           ]
         },
         {
-          name: "Membackup file secara berkala",
+          name: "Mengirimkan file yang berisi informasi sensitif",
           questions: [
-            { dim: "K", text: "Mencadangkan file merupakan hal yang tidak penting untuk dilakukan.", reverse: true },
-            { dim: "A", text: "Penting untuk mencadangkan secara rutin file untuk memastikan data tidak hilang saat terjadi insiden keamanan.", reverse: false },
-            { dim: "B", text: "Saya secara rutin mencadangkan file untuk mencegah kehilangan data.", reverse: false }
+            { dim: "K", text: "Saya boleh mengirim informasi kerja yang sensitif melalui email pribadi atau aplikasi pengirim pesan.", reverse: true },
+            { dim: "A", text: "Mengirimkan file kerja yang berisi informasi sensitif menggunakan saluran komunikasi pribadi adalah hal yang berisiko.", reverse: false },
+            { dim: "B", text: "Saya hanya mengirimkan file yang berisi informasi kerja sensitif melalui aplikasi pengirim pesan milik kantor.", reverse: false }
+          ]
+        },
+        {
+          name: "Menghapus data secara permanen",
+          questions: [
+            { dim: "K", text: "Menghapus data secara permanen saat perangkat akan dibuang atau diganti adalah hal yang penting.", reverse: false },
+            { dim: "A", text: "Saat akan mengganti perangkat, maka data harus dihapus secara permanen terlebih dahulu.", reverse: false },
+            { dim: "B", text: "Saya tidak perlu menghapus data secara permanen saat perangkat akan dibuang atau diganti.", reverse: true }
+          ]
+        },
+        {
+          name: "Menyimpan dokumen kerja di perangkat pribadi",
+          questions: [
+            { dim: "K", text: "Menyimpan dokumen rahasia milik kantor di perangkat pribadi (HP pribadi, laptop pribadi, atau flashdisk pribadi) dapat meningkatkan risiko kebocoran data instansi.", reverse: false },
+            { dim: "A", text: "Menyimpan dokumen rahasia kantor di perangkat pribadi adalah hal yang wajar selama tujuannya untuk memudahkan pekerjaan.", reverse: true },
+            { dim: "B", text: "Saya menghindari menyimpan dokumen rahasia kantor di perangkat pribadi saya.", reverse: false }
+          ]
+        },
+        {
+          name: "Perlindungan data pribadi",
+          questions: [
+            { dim: "K", text: "Data pribadi (alamat, nomor telepon, biometrik) memerlukan perlindungan dan tidak boleh disebarkan sembarangan.", reverse: false },
+            { dim: "A", text: "Membagikan data pribadi (baik milik saya, keluarga, maupun warga) di media sosial atau grup WhatsApp adalah hal yang wajar selama tidak berniat merugikan.", reverse: true },
+            { dim: "B", text: "Saya mempertimbangkan jenis dan sensitivitas data pribadi sebelum membagikan atau mengunggahnya di media sosial maupun kanal komunikasi lain.", reverse: false }
           ]
         }
       ]
@@ -338,7 +434,7 @@ window.HAISQ_DATA = {
         {
           name: "Mempelajari insiden keamanan informasi",
           questions: [
-            { dim: "K", text: "Tidak perlu meninjau ulang apa yang terjadi setelah terjadi insiden keamanan informasi (tidak perlu berhati-hati ketika mengakses website aneh setelah ada kejadian phishing).", reverse: true },
+            { dim: "K", text: "Tidak perlu meninjau ulang apa yang terjadi setelah terjadi insiden keamanan informasi (mengabaikan insiden keamanan IT karena urusan bidang IT saja).", reverse: true },
             { dim: "A", text: "Penting untuk meninjau dan belajar dari insiden keamanan agar kesalahan yang sama tidak terulang.", reverse: false },
             { dim: "B", text: "Setelah insiden keamanan, saya meluangkan waktu untuk memahami apa yang salah dan menerapkan pelajaran yang diperoleh untuk memperbaiki perilaku saya ke depannya.", reverse: false }
           ]
@@ -349,6 +445,14 @@ window.HAISQ_DATA = {
             { dim: "K", text: "Menghadiri pelatihan keamanan informasi merupakan kegiatan yang bersifat opsional dan tidak penting.", reverse: true },
             { dim: "A", text: "Rutin berpartisipasi dalam pelatihan kesadaran keamanan informasi agar tetap terupdate dengan ancaman terkini adalah hal yang penting.", reverse: false },
             { dim: "B", text: "Saya secara aktif berpartisipasi dalam semua pelatihan keamanan informasi dan program kesadaran keamanan informasi.", reverse: false }
+          ]
+        },
+        {
+          name: "Memahami peraturan tentang kebijakan keamanan informasi",
+          questions: [
+            { dim: "K", text: "Memahami kebijakan keamanan informasi yang berlaku di instansi (seperti SOP keamanan, Pergub/Kepgub SMKI, dan regulasi Pelindungan Data Pribadi) merupakan hal penting bagi setiap ASN.", reverse: false },
+            { dim: "A", text: "Sebagai ASN, saya wajib mempelajari dan mematuhi kebijakan keamanan informasi yang ditetapkan instansi.", reverse: false },
+            { dim: "B", text: "Saya membaca dan berupaya memahami kebijakan keamanan informasi (SOP, Pergub/Kepgub SMKI, aturan PDP) yang berlaku di instansi tempat saya bekerja.", reverse: false }
           ]
         }
       ]
