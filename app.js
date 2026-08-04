@@ -152,6 +152,7 @@ function renderFocus() {
   } else {
     nextBtn.innerHTML = 'Selanjutnya <span class="arrow">→</span>';
   }
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function setAnswer(key, value) {
