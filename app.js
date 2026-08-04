@@ -13,6 +13,7 @@
  */
 
 const DATA = window.HAISQ_DATA;
+const STORAGE_KEY = "haisq_progress_v1";
 
 const state = {
   demographics: {},
@@ -65,11 +66,11 @@ function submitDemographics() {
     return;
   }
 
-  state.demographics = data;
-  state.currentFocus = 0;
-  renderFocus();
-  goToSection("questionnaire");
-}
+state.demographics = data;
+state.currentFocus = 0;
+saveProgress();
+renderFocus();
+goToSection("questionnaire");
 
 /* ============================================
    Questionnaire rendering
@@ -154,6 +155,7 @@ function setAnswer(key, value) {
   // Remove "unanswered" highlight if it was there
   const el = document.querySelector(`.question[data-key="${key}"]`);
   if (el) el.classList.remove("unanswered");
+  saveProgress();
 }
 
 function nextFocus() {
@@ -190,13 +192,15 @@ function nextFocus() {
     return;
   }
 
-  state.currentFocus++;
-  renderFocus();
+state.currentFocus++;
+saveProgress();
+renderFocus();
 }
 
 function prevFocus() {
   if (state.currentFocus === 0) return;
   state.currentFocus--;
+  saveProgress();
   renderFocus();
 }
 
@@ -321,6 +325,7 @@ function computeAndShowResults() {
     kabGrid.appendChild(cell);
   });
 
+  clearProgress();
   goToSection("results");
 }
 
@@ -332,6 +337,7 @@ function restart() {
   state.demographics = {};
   state.answers = {};
   state.currentFocus = 0;
+  clearProgress();
   document.querySelectorAll("input, select").forEach(el => {
     if (el.type === "radio") el.checked = false;
     else el.value = "";
@@ -387,3 +393,85 @@ function escapeHtml(s) {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 }
+}
+/* ============================================
+   Auto-save (localStorage)
+   ============================================ */
+function saveProgress() {
+  try {
+    const payload = {
+      demographics: state.demographics,
+      answers: state.answers,
+      currentFocus: state.currentFocus,
+      savedAt: new Date().toISOString()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  } catch (e) {
+    console.warn("Gagal menyimpan progress:", e);
+  }
+}
+
+function clearProgress() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (e) {
+    console.warn("Gagal menghapus progress:", e);
+  }
+}
+
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    const data = JSON.parse(raw);
+    // Cek apakah data valid & belum kadaluarsa (7 hari)
+    const savedAt = new Date(data.savedAt);
+    const daysSince = (Date.now() - savedAt.getTime()) / (1000 * 60 * 60 * 24);
+    if (daysSince > 7) {
+      clearProgress();
+      return null;
+    }
+    return data;
+  } catch (e) {
+    return null;
+  }
+}
+
+function checkAndResumeProgress() {
+  const saved = loadProgress();
+  if (!saved) return;
+  if (!saved.demographics.nama || Object.keys(saved.answers).length === 0) {
+    return;
+  }
+
+  const nama = saved.demographics.nama.split(" ")[0];
+  const answered = Object.keys(saved.answers).length;
+  const total = DATA.focusAreas.reduce((sum, fa) =>
+    sum + fa.subAreas.reduce((s, sa) => s + sa.questions.length, 0), 0);
+  const savedDate = new Date(saved.savedAt).toLocaleString("id-ID");
+
+  const shouldResume = confirm(
+    `Ada progress yang belum selesai untuk "${nama}" (${answered} dari ${total} pertanyaan sudah dijawab, disimpan ${savedDate}).\n\n` +
+    `Klik OK untuk melanjutkan, atau Cancel untuk memulai dari awal.`
+  );
+
+  if (shouldResume) {
+    state.demographics = saved.demographics;
+    state.answers = saved.answers;
+    state.currentFocus = saved.currentFocus || 0;
+
+    // Restore demographics ke form (biar terisi kalau responden kembali ke halaman demografis)
+    for (const [key, value] of Object.entries(saved.demographics)) {
+      const el = document.getElementById("dg-" + key);
+      if (el) el.value = value;
+    }
+
+    renderFocus();
+    goToSection("questionnaire");
+  } else {
+    clearProgress();
+  }
+}
+
+// Panggil saat halaman dimuat
+window.addEventListener("DOMContentLoaded", checkAndResumeProgress);
