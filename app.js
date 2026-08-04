@@ -10,6 +10,9 @@
  *   effective = q.reverse ? (6 - answer) : answer
  *   focusScore = mean of all effective scores in that focus area
  *   totalScore = mean of ALL effective scores across the questionnaire
+ *
+ * Autosave: Progress otomatis disimpan ke localStorage setiap kali user
+ * menjawab pertanyaan atau pindah halaman. Progress bertahan hingga 7 hari.
  */
 
 const DATA = window.HAISQ_DATA;
@@ -66,11 +69,12 @@ function submitDemographics() {
     return;
   }
 
-state.demographics = data;
-state.currentFocus = 0;
-saveProgress();
-renderFocus();
-goToSection("questionnaire");
+  state.demographics = data;
+  state.currentFocus = 0;
+  saveProgress();
+  renderFocus();
+  goToSection("questionnaire");
+}
 
 /* ============================================
    Questionnaire rendering
@@ -192,9 +196,9 @@ function nextFocus() {
     return;
   }
 
-state.currentFocus++;
-saveProgress();
-renderFocus();
+  state.currentFocus++;
+  saveProgress();
+  renderFocus();
 }
 
 function prevFocus() {
@@ -383,18 +387,6 @@ function downloadJSON() {
 }
 
 /* ============================================
-   Utils
-   ============================================ */
-function escapeHtml(s) {
-  return String(s)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-}
-/* ============================================
    Auto-save (localStorage)
    ============================================ */
 function saveProgress() {
@@ -475,3 +467,15 @@ function checkAndResumeProgress() {
 
 // Panggil saat halaman dimuat
 window.addEventListener("DOMContentLoaded", checkAndResumeProgress);
+
+/* ============================================
+   Utils
+   ============================================ */
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
