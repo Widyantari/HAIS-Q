@@ -11,12 +11,15 @@
  *   focusScore = mean of all effective scores in that focus area
  *   totalScore = mean of ALL effective scores across the questionnaire
  *
- * Autosave: Progress otomatis disimpan ke localStorage setiap kali user
- * menjawab pertanyaan atau pindah halaman. Progress bertahan hingga 7 hari.
+ * Autosave: Progress otomatis disimpan ke localStorage.
+ * NIP Deduplication: NIP yang sudah menyelesaikan kuesioner disimpan
+ * ke localStorage supaya tidak bisa isi 2x dari perangkat yang sama.
+ * CSV Export: Hasil bisa di-download sebagai CSV untuk analisis di Excel/SPSS.
  */
 
 const DATA = window.HAISQ_DATA;
 const STORAGE_KEY = "haisq_progress_v1";
+const SUBMITTED_NIPS_KEY = "haisq_submitted_nips_v1";
 
 const state = {
   demographics: {},
@@ -39,12 +42,12 @@ function goToSection(name) {
 function submitDemographics() {
   const fields = [
     ["nama", "Nama Lengkap"],
+    ["nip", "NIP"],
     ["email", "Email"],
     ["gender", "Jenis Kelamin"],
     ["usia", "Usia"],
-    ["profesi", "Profesi"],
-    ["provinsi", "Provinsi"],
-    ["kota", "Kota/Kabupaten"],
+    ["jabatan", "Jabatan"],
+    ["opd", "Asal OPD/PD"],
     ["pendidikan", "Pendidikan Terakhir"]
   ];
 
@@ -62,10 +65,32 @@ function submitDemographics() {
     return;
   }
 
-  // Basic email validation
+  if (!/^\d{18}$/.test(data.nip)) {
+    alert("NIP harus terdiri dari 18 digit angka.");
+    document.getElementById("dg-nip").focus();
+    return;
+  }
+
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
     alert("Format email tidak valid.");
     document.getElementById("dg-email").focus();
+    return;
+  }
+
+  const opdOptions = Array.from(document.querySelectorAll("#opd-list option"))
+    .map(o => o.value);
+  if (!opdOptions.includes(data.opd)) {
+    alert("Asal OPD/PD harus dipilih dari daftar yang tersedia. Silakan klik kolom OPD/PD lalu pilih dari daftar.");
+    document.getElementById("dg-opd").focus();
+    return;
+  }
+
+  const submittedNIPs = getSubmittedNIPs();
+  if (submittedNIPs.includes(data.nip)) {
+    alert(
+      "NIP " + data.nip + " sudah pernah mengisi kuesioner dari perangkat ini.\n\n" +
+      "Setiap pegawai hanya diperbolehkan mengisi kuesioner ini satu kali."
+    );
     return;
   }
 
@@ -142,7 +167,6 @@ function renderFocus() {
     container.appendChild(card);
   });
 
-  // Update prev/next buttons
   const prevBtn = document.getElementById("q-prev-btn");
   const nextBtn = document.getElementById("q-next-btn");
   prevBtn.disabled = state.currentFocus === 0;
@@ -152,19 +176,18 @@ function renderFocus() {
   } else {
     nextBtn.innerHTML = 'Selanjutnya <span class="arrow">→</span>';
   }
+
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function setAnswer(key, value) {
   state.answers[key] = value;
-  // Remove "unanswered" highlight if it was there
   const el = document.querySelector(`.question[data-key="${key}"]`);
   if (el) el.classList.remove("unanswered");
   saveProgress();
 }
 
 function nextFocus() {
-  // Check that all questions in current focus area are answered
   const fa = DATA.focusAreas[state.currentFocus];
   const missing = [];
 
@@ -182,7 +205,6 @@ function nextFocus() {
       const el = document.querySelector(`.question[data-key="${key}"]`);
       if (el) el.classList.add("unanswered");
     });
-    // Scroll to first missing
     const firstEl = document.querySelector(`.question[data-key="${missing[0]}"]`);
     if (firstEl) {
       firstEl.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -192,7 +214,6 @@ function nextFocus() {
   }
 
   if (state.currentFocus === DATA.focusAreas.length - 1) {
-    // Last focus — go to results
     computeAndShowResults();
     return;
   }
@@ -278,13 +299,11 @@ function categoryDescription(cat) {
 function computeAndShowResults() {
   const results = computeResults();
 
-  // Greeting
   const nama = state.demographics.nama || "";
   const firstName = nama.split(" ")[0] || "Terima kasih";
   document.getElementById("result-name-greeting").innerHTML =
     `Terima kasih, <em>${escapeHtml(firstName)}</em>`;
 
-  // Total
   const totalCat = getCategory(results.total);
   document.getElementById("total-score").textContent = results.total.toFixed(2);
   const catBadge = document.getElementById("total-category");
@@ -292,12 +311,11 @@ function computeAndShowResults() {
   document.getElementById("total-card").style.setProperty("--total-color", totalCat.color);
   document.getElementById("total-desc").textContent = categoryDescription(totalCat.label);
 
-  // Focus areas
   const focusContainer = document.getElementById("focus-results");
   focusContainer.innerHTML = "";
   results.focus.forEach(f => {
     const cat = getCategory(f.score);
-    const pct = ((f.score - 1) / 4 * 100).toFixed(1); // 1..5 mapped to 0..100
+    const pct = ((f.score - 1) / 4 * 100).toFixed(1);
     const row = document.createElement("div");
     row.className = "focus-row";
     row.innerHTML = `
@@ -312,7 +330,6 @@ function computeAndShowResults() {
     focusContainer.appendChild(row);
   });
 
-  // KAB dimensions
   const kabGrid = document.getElementById("kab-grid");
   kabGrid.innerHTML = "";
   const dimNames = { K: "Pengetahuan", A: "Sikap", B: "Perilaku" };
@@ -330,61 +347,100 @@ function computeAndShowResults() {
     kabGrid.appendChild(cell);
   });
 
+  if (state.demographics.nip) {
+    addSubmittedNIP(state.demographics.nip);
+  }
   clearProgress();
   goToSection("results");
 }
 
 /* ============================================
-   Restart / Export
+   CSV Export
    ============================================ */
-function restart() {
-  if (!confirm("Yakin ingin mengulangi kuesioner? Semua jawaban akan direset.")) return;
-  state.demographics = {};
-  state.answers = {};
-  state.currentFocus = 0;
-  clearProgress();
-  document.querySelectorAll("input, select").forEach(el => {
-    if (el.type === "radio") el.checked = false;
-    else el.value = "";
-  });
-  goToSection("welcome");
-}
-
-function downloadJSON() {
+function downloadCSV() {
   const results = computeResults();
-  const payload = {
-    exportedAt: new Date().toISOString(),
-    demographics: state.demographics,
-    scores: {
-      total: {
-        score: Number(results.total.toFixed(4)),
-        category: getCategory(results.total).label
-      },
-      focusAreas: results.focus.map(f => ({
-        code: f.code,
-        name: f.name,
-        score: Number(f.score.toFixed(4)),
-        category: getCategory(f.score).label
-      })),
-      dimensions: {
-        K: { score: Number(results.dimensions.K.toFixed(4)), category: getCategory(results.dimensions.K).label },
-        A: { score: Number(results.dimensions.A.toFixed(4)), category: getCategory(results.dimensions.A).label },
-        B: { score: Number(results.dimensions.B.toFixed(4)), category: getCategory(results.dimensions.B).label }
-      }
-    },
-    rawAnswers: state.answers
-  };
+  const headers = [];
+  const values = [];
 
-  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  // Timestamp
+  headers.push("waktu_ekspor");
+  values.push(new Date().toISOString());
+
+  // Demographics
+  const demoCols = [
+    ["nama", "nama"],
+    ["nip", "nip"],
+    ["email", "email"],
+    ["gender", "jenis_kelamin"],
+    ["usia", "usia"],
+    ["jabatan", "jabatan"],
+    ["opd", "asal_opd"],
+    ["pendidikan", "pendidikan_terakhir"]
+  ];
+  demoCols.forEach(([key, col]) => {
+    headers.push(col);
+    values.push(state.demographics[key] || "");
+  });
+
+  // Total score & category
+  const totalCat = getCategory(results.total);
+  headers.push("skor_total", "kategori_total");
+  values.push(results.total.toFixed(4), totalCat.label);
+
+  // Per focus area
+  results.focus.forEach(f => {
+    const cat = getCategory(f.score);
+    headers.push(`skor_${f.code}`, `kategori_${f.code}`);
+    values.push(f.score.toFixed(4), cat.label);
+  });
+
+  // Per dimension (K/A/B)
+  ["K", "A", "B"].forEach(d => {
+    const score = results.dimensions[d];
+    const cat = getCategory(score);
+    headers.push(`skor_dim_${d}`, `kategori_dim_${d}`);
+    values.push(score.toFixed(4), cat.label);
+  });
+
+  // Raw answers (1 kolom per pertanyaan)
+  DATA.focusAreas.forEach((fa, faIdx) => {
+    fa.subAreas.forEach((sa, saIdx) => {
+      sa.questions.forEach((q, qIdx) => {
+        const key = `${faIdx}-${saIdx}-${qIdx}`;
+        const answer = state.answers[key];
+        headers.push(`jawaban_${fa.code}_sub${saIdx + 1}_${q.dim}`);
+        values.push(answer !== undefined ? answer : "");
+      });
+    });
+  });
+
+  // Build CSV content
+  const csvContent = csvRow(headers) + "\r\n" + csvRow(values) + "\r\n";
+
+  // Prepend UTF-8 BOM biar Excel mengenali encoding dengan benar
+  const blob = new Blob(["\uFEFF" + csvContent], {
+    type: "text/csv;charset=utf-8"
+  });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   const safeName = (state.demographics.nama || "responden").replace(/[^a-zA-Z0-9]+/g, "_");
   a.href = url;
-  a.download = `HAISQ_${safeName}_${new Date().toISOString().slice(0, 10)}.json`;
+  a.download = `HAISQ_${safeName}_${new Date().toISOString().slice(0, 10)}.csv`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
+}
+
+// Escape CSV field: jika ada koma, quote, atau newline, wrap dengan quotes
+function csvRow(fields) {
+  return fields.map(f => {
+    const s = String(f);
+    if (/[",\r\n]/.test(s)) {
+      return '"' + s.replace(/"/g, '""') + '"';
+    }
+    return s;
+  }).join(",");
 }
 
 /* ============================================
@@ -417,7 +473,6 @@ function loadProgress() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     const data = JSON.parse(raw);
-    // Cek apakah data valid & belum kadaluarsa (7 hari)
     const savedAt = new Date(data.savedAt);
     const daysSince = (Date.now() - savedAt.getTime()) / (1000 * 60 * 60 * 24);
     if (daysSince > 7) {
@@ -453,7 +508,6 @@ function checkAndResumeProgress() {
     state.answers = saved.answers;
     state.currentFocus = saved.currentFocus || 0;
 
-    // Restore demographics ke form (biar terisi kalau responden kembali ke halaman demografis)
     for (const [key, value] of Object.entries(saved.demographics)) {
       const el = document.getElementById("dg-" + key);
       if (el) el.value = value;
@@ -466,8 +520,31 @@ function checkAndResumeProgress() {
   }
 }
 
-// Panggil saat halaman dimuat
 window.addEventListener("DOMContentLoaded", checkAndResumeProgress);
+
+/* ============================================
+   NIP Deduplication (localStorage)
+   ============================================ */
+function getSubmittedNIPs() {
+  try {
+    const raw = localStorage.getItem(SUBMITTED_NIPS_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function addSubmittedNIP(nip) {
+  try {
+    const list = getSubmittedNIPs();
+    if (!list.includes(nip)) {
+      list.push(nip);
+      localStorage.setItem(SUBMITTED_NIPS_KEY, JSON.stringify(list));
+    }
+  } catch (e) {
+    console.warn("Gagal menyimpan NIP:", e);
+  }
+}
 
 /* ============================================
    Utils
