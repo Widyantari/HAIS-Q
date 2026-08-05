@@ -11,15 +11,14 @@
  *   focusScore = mean of all effective scores in that focus area
  *   totalScore = mean of ALL effective scores across the questionnaire
  *
- * Autosave: Progress otomatis disimpan ke localStorage.
- * NIP Deduplication: NIP yang sudah menyelesaikan kuesioner disimpan
- * ke localStorage supaya tidak bisa isi 2x dari perangkat yang sama.
- * CSV Export: Hasil bisa di-download sebagai CSV untuk analisis di Excel/SPSS.
+ * Fitur:
+ * - Autosave: progress otomatis disimpan ke localStorage
+ * - Auto scroll to top: setiap pindah fokus area
+ * - CSV Export: hasil bisa didownload sebagai CSV untuk analisis di Excel/SPSS
  */
 
 const DATA = window.HAISQ_DATA;
 const STORAGE_KEY = "haisq_progress_v1";
-const SUBMITTED_NIPS_KEY = "haisq_submitted_nips_v1";
 
 const state = {
   demographics: {},
@@ -42,12 +41,12 @@ function goToSection(name) {
 function submitDemographics() {
   const fields = [
     ["nama", "Nama Lengkap"],
-    ["nip", "NIP"],
     ["email", "Email"],
     ["gender", "Jenis Kelamin"],
     ["usia", "Usia"],
-    ["jabatan", "Jabatan"],
-    ["opd", "Asal OPD/PD"],
+    ["profesi", "Profesi"],
+    ["provinsi", "Provinsi"],
+    ["kota", "Kota/Kabupaten"],
     ["pendidikan", "Pendidikan Terakhir"]
   ];
 
@@ -65,32 +64,10 @@ function submitDemographics() {
     return;
   }
 
-  if (!/^\d{18}$/.test(data.nip)) {
-    alert("NIP harus terdiri dari 18 digit angka.");
-    document.getElementById("dg-nip").focus();
-    return;
-  }
-
+  // Basic email validation
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
     alert("Format email tidak valid.");
     document.getElementById("dg-email").focus();
-    return;
-  }
-
-  const opdOptions = Array.from(document.querySelectorAll("#opd-list option"))
-    .map(o => o.value);
-  if (!opdOptions.includes(data.opd)) {
-    alert("Asal OPD/PD harus dipilih dari daftar yang tersedia. Silakan klik kolom OPD/PD lalu pilih dari daftar.");
-    document.getElementById("dg-opd").focus();
-    return;
-  }
-
-  const submittedNIPs = getSubmittedNIPs();
-  if (submittedNIPs.includes(data.nip)) {
-    alert(
-      "NIP " + data.nip + " sudah pernah mengisi kuesioner dari perangkat ini.\n\n" +
-      "Setiap pegawai hanya diperbolehkan mengisi kuesioner ini satu kali."
-    );
     return;
   }
 
@@ -347,11 +324,24 @@ function computeAndShowResults() {
     kabGrid.appendChild(cell);
   });
 
-  if (state.demographics.nip) {
-    addSubmittedNIP(state.demographics.nip);
-  }
   clearProgress();
   goToSection("results");
+}
+
+/* ============================================
+   Restart
+   ============================================ */
+function restart() {
+  if (!confirm("Yakin ingin mengulangi kuesioner? Semua jawaban akan direset.")) return;
+  state.demographics = {};
+  state.answers = {};
+  state.currentFocus = 0;
+  clearProgress();
+  document.querySelectorAll("input, select").forEach(el => {
+    if (el.type === "radio") el.checked = false;
+    else el.value = "";
+  });
+  goToSection("welcome");
 }
 
 /* ============================================
@@ -369,12 +359,12 @@ function downloadCSV() {
   // Demographics
   const demoCols = [
     ["nama", "nama"],
-    ["nip", "nip"],
     ["email", "email"],
     ["gender", "jenis_kelamin"],
     ["usia", "usia"],
-    ["jabatan", "jabatan"],
-    ["opd", "asal_opd"],
+    ["profesi", "profesi"],
+    ["provinsi", "provinsi"],
+    ["kota", "kota_kabupaten"],
     ["pendidikan", "pendidikan_terakhir"]
   ];
   demoCols.forEach(([key, col]) => {
@@ -432,7 +422,6 @@ function downloadCSV() {
   URL.revokeObjectURL(url);
 }
 
-// Escape CSV field: jika ada koma, quote, atau newline, wrap dengan quotes
 function csvRow(fields) {
   return fields.map(f => {
     const s = String(f);
@@ -521,30 +510,6 @@ function checkAndResumeProgress() {
 }
 
 window.addEventListener("DOMContentLoaded", checkAndResumeProgress);
-
-/* ============================================
-   NIP Deduplication (localStorage)
-   ============================================ */
-function getSubmittedNIPs() {
-  try {
-    const raw = localStorage.getItem(SUBMITTED_NIPS_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch (e) {
-    return [];
-  }
-}
-
-function addSubmittedNIP(nip) {
-  try {
-    const list = getSubmittedNIPs();
-    if (!list.includes(nip)) {
-      list.push(nip);
-      localStorage.setItem(SUBMITTED_NIPS_KEY, JSON.stringify(list));
-    }
-  } catch (e) {
-    console.warn("Gagal menyimpan NIP:", e);
-  }
-}
 
 /* ============================================
    Utils
