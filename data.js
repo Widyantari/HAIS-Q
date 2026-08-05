@@ -218,7 +218,7 @@ window.HAISQ_DATA = {
           ]
         },
         {
-          name: "Mengikuti tren viral yang mungkin menyebabkan tersebarnya data pribadi/sensitif",
+          name: "Mengikuti tren viral",
           questions: [
             { dim: "K", text: "Mengikuti tren viral di media sosial (seperti challenge, filter AI, kuis kepribadian, atau face-swap) yang meminta akses data pribadi dapat menyebabkan kebocoran informasi sensitif.", reverse: false },
             { dim: "A", text: "Saya berhati-hati dalam mengikuti tren viral di media sosial yang berpotensi mengekspos data pribadi maupun informasi kedinasan.", reverse: false },
