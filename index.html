@@ -171,9 +171,7 @@
         </div>
       </div>
 
-      <div id="q-focus-container">
-        <!-- populated by JS -->
-      </div>
+      <div id="q-focus-container"></div>
 
       <div class="actions between q-nav">
         <button class="btn ghost" id="q-prev-btn" onclick="prevFocus()">
@@ -205,24 +203,40 @@
         </div>
       </div>
 
+      <!-- NEW: Auto Summary -->
+      <div class="auto-summary-card">
+        <div class="auto-summary-label">📊 Ringkasan Hasil</div>
+        <div class="auto-summary-text" id="auto-summary">—</div>
+      </div>
+
       <!-- Per-focus-area breakdown -->
       <div class="results-section-title">
         <h3>Rincian per Fokus Area</h3>
-        <p>Skor dihitung sebagai rata-rata dari dimensi Pengetahuan, Sikap, dan Perilaku pada tiap fokus area.</p>
+        <p>Skor dihitung sebagai rata-rata dari dimensi Pengetahuan, Sikap, dan Perilaku pada tiap fokus area. Tanda 🏆 menunjukkan fokus area terkuat, ⚠️ menunjukkan yang perlu perhatian.</p>
       </div>
 
-      <div class="focus-results" id="focus-results">
-        <!-- populated by JS -->
-      </div>
+      <div class="focus-results" id="focus-results"></div>
 
-      <!-- KAB breakdown -->
+      <!-- NEW: Sub-area strengths & weaknesses -->
+      <div class="results-section-title">
+        <h3>Kekuatan &amp; Perlu Perhatian</h3>
+        <p>Sub-area dengan skor tertinggi (kekuatan Anda) dan terendah (perlu perhatian) dari 47 sub-area yang dinilai.</p>
+      </div>
+      <div class="highlight-grid" id="sub-area-highlights"></div>
+
+      <!-- KAB breakdown with descriptions -->
       <div class="results-section-title">
         <h3>Rincian per Dimensi</h3>
         <p>Perbandingan skor berdasarkan Pengetahuan (K), Sikap (A), dan Perilaku (B).</p>
       </div>
-      <div class="kab-grid" id="kab-grid">
-        <!-- populated by JS -->
+      <div class="kab-grid" id="kab-grid"></div>
+
+      <!-- NEW: Recommendations -->
+      <div class="results-section-title">
+        <h3>Rekomendasi Peningkatan</h3>
+        <p>Berikut adalah tindakan konkret yang dapat Anda lakukan untuk meningkatkan kesadaran keamanan informasi pada 3 fokus area dengan skor terendah.</p>
       </div>
+      <div class="recommendations" id="recommendations"></div>
 
       <!-- NJI reference table -->
       <div class="results-section-title">
