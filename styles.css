@@ -511,7 +511,7 @@ input, select { font-family: inherit; font-size: inherit; color: inherit; }
   font-size: 1.75rem;
   margin: 0 0 var(--step-2);
 }
-.results-section-title p { margin: 0; color: var(--ink-3); font-size: 0.95rem; max-width: 70ch; }
+.results-section-title p { margin: 0; color: var(--ink-3); font-size: 0.95rem; }
 
 .focus-results { display: grid; gap: var(--step-3); }
 .focus-row {
