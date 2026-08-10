@@ -13,7 +13,7 @@ const state = {
 const DIMENSION_INFO = {
   K: {
     name: "Pengetahuan",
-    description: "Mengukur pemahaman Anda mengenai ancaman siber, password, phishing, keamanan data, dan konsep keamanan informasi lainnya."
+    description: "Mengukur pemahaman Anda mengenai ancaman siber, phishing, keamanan data, dan konsep keamanan informasi lainnya."
   },
   A: {
     name: "Sikap",
@@ -58,7 +58,7 @@ const RECOMMENDATIONS = {
   IU: {
     title: "Penggunaan Internet",
     tips: [
-      "Cek keamanan website (URL berawalan https, gembok sertifikat) sebelum memasukkan data pribadi",
+      "Cek keamanan website (URL berawalan https) sebelum memasukkan data pribadi",
       "Hanya download dan install aplikasi berlisensi dari sumber resmi",
       "Gunakan VPN kantor saat mengakses aplikasi kerja dari jaringan publik",
       "Hati-hati dengan tawaran menggiurkan yang meminta data pribadi",
@@ -102,14 +102,14 @@ const RECOMMENDATIONS = {
       "Jangan colokkan USB tak dikenal ke perangkat Anda",
       "Backup data penting secara rutin ke lokasi yang aman",
       "Hapus data secara permanen sebelum membuang atau mengganti perangkat",
-      "Hindari menyimpan dokumen kantor di perangkat pribadi"
+      "Hindari menyimpan dokumen kantor yang bersifat rahasia di perangkat pribadi"
     ]
   },
   IR: {
     title: "Pelaporan Insiden",
     tips: [
       "Laporkan segera aktivitas mencurigakan di tempat kerja",
-      "Jangan abaikan pelanggaran keamanan, sekecil apapun",
+      "Jangan abaikan pelanggaran keamanan sekecil apapun",
       "Ambil tindakan saat menyadari rekan kerja mengabaikan aturan keamanan",
       "Pelajari saluran pelaporan insiden yang tersedia di instansi Anda"
     ]
