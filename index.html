@@ -31,11 +31,11 @@
           <div class="info-label">Fokus Area</div>
         </div>
         <div class="info-cell">
-          <div class="info-value">46</div>
+          <div class="info-value">43–46</div>
           <div class="info-label">Sub Area</div>
         </div>
         <div class="info-cell">
-          <div class="info-value">138</div>
+          <div class="info-value">129–138</div>
           <div class="info-label">Pertanyaan</div>
         </div>
         <div class="info-cell">
@@ -73,6 +73,18 @@
       </div>
 
       <div class="form-grid">
+        <label class="field span-2">
+          <span class="field-label">Peran Anda</span>
+          <select id="dg-role" required onchange="updateRoleHint()">
+            <option value="">Pilih peran…</option>
+            <option value="user">Pengguna Biasa</option>
+            <option value="admin">Admin Kantor</option>
+          </select>
+          <span id="role-hint" style="display:block;margin-top:8px;font-size:0.8rem;color:#8a97a5;line-height:1.5;">
+            Admin Kantor akan mendapat 3 sub-area tambahan (9 pertanyaan lebih banyak) terkait pengelolaan sistem keamanan.
+          </span>
+        </label>
+
         <label class="field span-2">
           <span class="field-label">Nama Lengkap</span>
           <input type="text" id="dg-nama" required>
@@ -203,7 +215,7 @@
         </div>
       </div>
 
-      <!-- NEW: Auto Summary -->
+      <!-- Auto Summary -->
       <div class="auto-summary-card">
         <div class="auto-summary-label">📊 Ringkasan Hasil</div>
         <div class="auto-summary-text" id="auto-summary">—</div>
@@ -217,10 +229,10 @@
 
       <div class="focus-results" id="focus-results"></div>
 
-      <!-- NEW: Sub-area strengths & weaknesses -->
+      <!-- Sub-area strengths & weaknesses -->
       <div class="results-section-title">
         <h3>Kekuatan &amp; Perlu Perhatian</h3>
-        <p>Sub-area dengan skor tertinggi (kekuatan Anda) dan terendah (perlu perhatian) dari 47 sub-area yang dinilai.</p>
+        <p>Sub-area dengan skor tertinggi (kekuatan Anda) dan terendah (perlu perhatian).</p>
       </div>
       <div class="highlight-grid" id="sub-area-highlights"></div>
 
@@ -231,7 +243,7 @@
       </div>
       <div class="kab-grid" id="kab-grid"></div>
 
-      <!-- NEW: Recommendations -->
+      <!-- Recommendations -->
       <div class="results-section-title">
         <h3>Rekomendasi Peningkatan</h3>
         <p>Berikut adalah tindakan konkret yang dapat Anda lakukan untuk meningkatkan kesadaran keamanan informasi pada 3 fokus area dengan skor terendah.</p>

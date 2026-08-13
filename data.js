@@ -1,12 +1,12 @@
 /**
- * HAIS-Q Kuesioner Data — VERSI TERBARU
- * 9 Fokus Area, 47 Sub Area, 141 Pertanyaan (K/A/B per sub-area)
+ * HAIS-Q Kuesioner Data
+ * 9 Fokus Area, 46 Sub Area, 138 Pertanyaan (K/A/B per sub-area)
  *
- * Field "reverse: true" berarti pertanyaan reverse-scored:
- *   skor sebenarnya = 6 - jawaban_user
- *   (jawab 5 = skor 1, jawab 1 = skor 5)
+ * - Pengguna Biasa: 43 sub-area, 129 pertanyaan
+ * - Admin Kantor:   46 sub-area, 138 pertanyaan (termasuk 3 sub-area khusus admin)
  *
- * Ditandai dari simbol "^" di dokumen kuesioner asli.
+ * Field "reverse: true"    → pertanyaan reverse-scored (skor = 6 - jawaban)
+ * Field "adminOnly: true"  → sub-area hanya muncul untuk Admin Kantor
  */
 
 window.HAISQ_DATA = {
@@ -295,6 +295,7 @@ window.HAISQ_DATA = {
         },
         {
           name: "Memberikan akses untuk masuk kepada orang yang tidak dikenal",
+          adminOnly: true,
           questions: [
             { dim: "K", text: "Sebagai admin, memberikan akses masuk ke sistem/jaringan/server kepada orang yang tidak dikenal atau tanpa verifikasi identitas dan otorisasi resmi dapat menyebabkan penyusupan, kebocoran data, atau serangan siber.", reverse: false },
             { dim: "A", text: "Memberikan akses masuk kepada orang yang mengaku dari pihak internal maupun eksternal tanpa verifikasi identitas adalah hal yang wajar dilakukan demi kecepatan pekerjaan.", reverse: true },
@@ -303,6 +304,7 @@ window.HAISQ_DATA = {
         },
         {
           name: "Memantau keamanan melalui CCTV",
+          adminOnly: true,
           questions: [
             { dim: "K", text: "Area tanpa kamera pengawas (cctv) atau tidak memasang alat deteksi penyusup bukanlah risiko keamanan bagi sistem/lingkungan saya.", reverse: true },
             { dim: "A", text: "Memasang dan selalu memantau CCTV dan alat deteksi penyusup di sistem/lingkungan yang menjadi tanggung-jawab saya adalah hal yang harus saya lakukan sebagai admin sistem.", reverse: false },
@@ -319,6 +321,7 @@ window.HAISQ_DATA = {
         },
         {
           name: "Mengaktifkan update/patch keamanan",
+          adminOnly: true,
           questions: [
             { dim: "K", text: "Memasang pembaruan (update/patch) keamanan sistem operasi dan aplikasi penting untuk menutup celah keamanan yang dapat dimanfaatkan penyerang.", reverse: false },
             { dim: "A", text: "Pembaruan keamanan sistem dan aplikasi harus segera dipasang meskipun mengganggu pekerjaan untuk sementara waktu.", reverse: false },
