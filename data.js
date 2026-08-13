@@ -1,14 +1,3 @@
-/**
- * HAIS-Q Kuesioner Data
- * 9 Fokus Area, 46 Sub Area, 138 Pertanyaan (K/A/B per sub-area)
- *
- * - Pengguna Biasa: 43 sub-area, 129 pertanyaan
- * - Admin Kantor:   46 sub-area, 138 pertanyaan (termasuk 3 sub-area khusus admin)
- *
- * Field "reverse: true"    → pertanyaan reverse-scored (skor = 6 - jawaban)
- * Field "adminOnly: true"  → sub-area hanya muncul untuk Admin Kantor
- */
-
 window.HAISQ_DATA = {
   scale: [
     { value: 1, label: "Sangat Tidak Setuju" },
