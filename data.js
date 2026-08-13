@@ -42,7 +42,7 @@ window.HAISQ_DATA = {
         {
           name: "Berbagi password",
           questions: [
-            { dim: "K", text: "Saya boleh membagikan password akun kerja dengan rekan kerja yang lain.", reverse: true },
+            { dim: "K", text: "Saya boleh membagikan password akun kerja ke rekan kerja yang lain.", reverse: true },
             { dim: "A", text: "Berbagi password akun kerja adalah ide yang buruk, bahkan jika rekan kerja memintanya.", reverse: false },
             { dim: "B", text: "Saya berbagi password akun kerja dengan rekan kerja.", reverse: true }
           ]
@@ -50,7 +50,7 @@ window.HAISQ_DATA = {
         {
           name: "Memilih password yang kuat",
           questions: [
-            { dim: "K", text: "Saya menggunakan kombinasi huruf, angka, dan simbol untuk membuat password akun kerja saya.", reverse: false },
+            { dim: "K", text: "Password akun kerja jauh lebih aman jika menggunakan kombinasi huruf, angka, dan simbol.", reverse: false },
             { dim: "A", text: "Memiliki password kerja hanya dengan huruf saja adalah hal yang aman.", reverse: true },
             { dim: "B", text: "Saya menggunakan kombinasi huruf, angka, dan simbol dalam password kerja saya.", reverse: false }
           ]
@@ -58,16 +58,16 @@ window.HAISQ_DATA = {
         {
           name: "Menyimpan catatan password",
           questions: [
-            { dim: "K", text: "Saya boleh mencatat password akun atau aplikasi agar tidak lupa (menyimpan password di whatsapp, email, telegram, browser tanpa pengamanan, serta sticky notes di atas meja kantor).", reverse: true },
-            { dim: "A", text: "Menyimpan password akun atau aplikasi adalah hal yang berisiko (menyimpan password di whatsapp, email, telegram, browser tanpa pengamanan, serta sticky notes di atas meja kantor).", reverse: false },
-            { dim: "B", text: "Saya tidak pernah menyimpan password akun atau aplikasi saya (menyimpan password di whatsapp, email, telegram, browser tanpa pengamanan, serta sticky notes di atas meja kantor).", reverse: false }
+            { dim: "K", text: "Saya boleh mencatat password akun atau aplikasi agar tidak lupa (contoh: menyimpan password di whatsapp, email, telegram, browser tanpa pengamanan, atau sticky notes di atas meja kantor).", reverse: true },
+            { dim: "A", text: "Menyimpan password akun/aplikasi tanpa pengamanan adalah hal yang berisiko (contoh: menyimpan password di whatsapp, email, telegram, browser tanpa pengamanan, atau sticky notes di atas meja kantor).", reverse: false },
+            { dim: "B", text: "Saya tidak pernah menyimpan password akun atau aplikasi saya tanpa pengamanan  (contoh: menyimpan password di whatsapp, email, telegram, browser tanpa pengamanan, serta sticky notes di atas meja kantor).", reverse: false }
           ]
         },
         {
           name: "Mengganti password secara berkala",
           questions: [
             { dim: "K", text: "Saya mengganti password akun secara berkala.", reverse: false },
-            { dim: "A", text: "Tidak perlu mengganti password akun secara berkala adalah hal yang aman.", reverse: true },
+            { dim: "A", text: "Menurut saya tidak masalah tidak mengganti password akun secara berkala.", reverse: true },
             { dim: "B", text: "Saya mengganti password saya secara berkala, misalnya dalam satu bulan sekali atau dua bulan sekali.", reverse: false }
           ]
         }
@@ -77,14 +77,6 @@ window.HAISQ_DATA = {
       code: "EU",
       name: "Penggunaan Email",
       subAreas: [
-        {
-          name: "Mengklik link di email yang pengirimnya dikenal",
-          questions: [
-            { dim: "K", text: "Saya diperbolehkan mengklik tautan apa pun dalam email dari orang yang saya kenal.", reverse: true },
-            { dim: "A", text: "Mengklik tautan dalam email dari orang yang saya kenal adalah hal yang aman.", reverse: true },
-            { dim: "B", text: "Saya tidak selalu mengklik tautan dalam email hanya karena berasal dari seseorang yang saya kenal.", reverse: false }
-          ]
-        },
         {
           name: "Mengklik link di email yang pengirimnya tidak dikenal",
           questions: [
@@ -104,9 +96,9 @@ window.HAISQ_DATA = {
         {
           name: "Menggunakan akun kantor untuk kepentingan pribadi",
           questions: [
-            { dim: "K", text: "Saya tidak diperbolehkan menggunakan akun kerja saya untuk kepentingan pribadi (login media sosial dengan email kantor).", reverse: false },
-            { dim: "A", text: "Menggunakan akun milik kantor untuk memudahkan urusan pribadi adalah hal yang aman.", reverse: true },
-            { dim: "B", text: "Saya tidak menggunakan akun kerja untuk menyelesaikan hal pribadi yang tidak ada urusannya dengan kantor.", reverse: false }
+            { dim: "K", text: "Saya tidak diperbolehkan menggunakan akun kerja saya untuk kepentingan pribadi (misal: login media sosial dengan email kantor).", reverse: false },
+            { dim: "A", text: "Menurut saya, tidak masalah menggunakan akun milik kantor untuk memudahkan urusan-urusan pribadi saya.", reverse: true },
+            { dim: "B", text: "Saya tidak pernah menggunakan akun kerja saya untuk mengerjakan urusan pribadi yang tidak ada hubungannya dengan kantor.", reverse: false }
           ]
         }
       ]
@@ -119,14 +111,14 @@ window.HAISQ_DATA = {
           name: "Mengunduh file",
           questions: [
             { dim: "K", text: "Saya diperbolehkan mengunduh file apa pun ke komputer kerja jika membantu pekerjaan saya.", reverse: true },
-            { dim: "A", text: "Mengunduh file di komputer kerja bisa berisiko (mengunduh file di komputer kerja dapat menimbulkan risiko).", reverse: false },
+            { dim: "A", text: "Menurut saya, mengunduh file apapun di komputer kerja dapat berisiko.", reverse: false },
             { dim: "B", text: "Saya mengunduh file apa pun ke komputer kerja yang akan membantu menyelesaikan pekerjaan.", reverse: true }
           ]
         },
         {
           name: "Mengakses website yang keamanannya meragukan",
           questions: [
-            { dim: "K", text: "Saat bekerja, saya tidak seharusnya mengakses website tertentu.", reverse: false },
+            { dim: "K", text: "Saat bekerja, saya tidak seharusnya mengakses website yang keamanannya meragukan.", reverse: false },
             { dim: "A", text: "Hanya karena saya bisa mengakses website di tempat kerja, bukan berarti website tersebut aman.", reverse: false },
             { dim: "B", text: "Saat mengakses internet di tempat kerja, saya mengunjungi website apa pun yang saya inginkan.", reverse: true }
           ]
@@ -134,9 +126,9 @@ window.HAISQ_DATA = {
         {
           name: "Memasukkan informasi secara online",
           questions: [
-            { dim: "K", text: "Saya diperbolehkan memasukkan informasi apa pun ke website mana pun jika membantu pekerjaan saya.", reverse: true },
-            { dim: "A", text: "Jika membantu pekerjaan saya, tidak masalah informasi apa yang saya masukkan ke website.", reverse: true },
-            { dim: "B", text: "Saya memastikan keamanan website sebelum memasukkan informasi.", reverse: false }
+            { dim: "K", text: "Saya diperbolehkan memasukkan data apa pun ke website mana pun selama membantu pekerjaan saya.", reverse: true },
+            { dim: "A", text: "Jika membantu pekerjaan saya, tidak masalah data apapun yang saya masukkan ke website.", reverse: true },
+            { dim: "B", text: "Saya selalu memastikan keamanan website sebelum memasukkan data ke suatu website tertentu.", reverse: false }
           ]
         },
         {
@@ -156,11 +148,11 @@ window.HAISQ_DATA = {
           ]
         },
         {
-          name: "Mengupload file penting ke dalam AI",
+          name: "Mengupload file ke dalam AI",
           questions: [
-            { dim: "K", text: "Saya tidak seharusnya memasukkan dokumen seperti foto pribadi ke dalam AI (ChatGPT, Gemini, MetaAI).", reverse: false },
-            { dim: "A", text: "Saya dapat dengan bebas mengupload dokumen dan foto apapun ke dalam AI.", reverse: true },
-            { dim: "B", text: "Saya memilih terlebih dahulu informasi apa saja yang dapat dimasukkan ke dalam AI.", reverse: false }
+            { dim: "K", text: "Saya tidak seharusnya memasukkan dokumen seperti foto/data pribadi atau dokumen kantor ke dalam AI (chatgpt, gemini, metaAI).", reverse: false },
+            { dim: "A", text: "Mengupload dokumen dan foto apapun ke dalam AI bukan hal yang perlu dipusingkan.", reverse: true },
+            { dim: "B", text: "Saya memilih terlebih dahulu informasi/file apa saja yang dapat dimasukkan ke dalam AI.", reverse: false }
           ]
         },
         {
@@ -168,7 +160,7 @@ window.HAISQ_DATA = {
           questions: [
             { dim: "K", text: "Memberikan informasi pribadi (nama, nomor telepon, alamat, NIK, email) demi mendapatkan hadiah, diskon, WiFi gratis, atau kemudahan lain berisiko menyebabkan penyalahgunaan data seperti penipuan, spam, atau pencurian identitas.", reverse: false },
             { dim: "A", text: "Memberikan data pribadi kepada aplikasi, undian, atau layanan tertentu tidak menjadi masalah selama saya mendapatkan keuntungan atau kemudahan dari layanan tersebut.", reverse: true },
-            { dim: "B", text: "Saya memeriksa kredibilitas pihak penerima dan kejelasan tujuan penggunaan data sebelum memberikan informasi pribadi saya di aplikasi, formulir, atau undian.", reverse: false }
+            { dim: "B", text: "Saya selalu memeriksa kredibilitas pihak penerima dan kejelasan tujuan penggunaan data sebelum memberikan informasi pribadi saya di aplikasi, formulir, atau undian.", reverse: false }
           ]
         }
       ]
@@ -196,9 +188,9 @@ window.HAISQ_DATA = {
         {
           name: "Posting pekerjaan di social media",
           questions: [
-            { dim: "K", text: "Saya dapat memposting apa yang saya inginkan tentang pekerjaan di media sosial.", reverse: true },
+            { dim: "K", text: "Saya boleh memposting apapun yang saya inginkan termasuk pekerjaan di media sosial (contoh: memposting/membahas pekerjaan secara publik dan melalui pesan dm (direct message)).", reverse: true },
             { dim: "A", text: "Memposting informasi tertentu tentang pekerjaan saya di media sosial adalah hal yang berisiko.", reverse: false },
-            { dim: "B", text: "Saya memposting apa pun yang saya inginkan tentang pekerjaan saya di media sosial.", reverse: true }
+            { dim: "B", text: "Saya sering memposting apa pun yang saya inginkan termasuk pekerjaan saya di media sosial (memposting/membahas pekerjaan secara publik dan melalui pesan dm (direct message)).", reverse: true }
           ]
         },
         {
@@ -213,16 +205,16 @@ window.HAISQ_DATA = {
           name: "Mengunggah dokumen ke dalam cloud publik",
           questions: [
             { dim: "K", text: "Saya tidak boleh mengupload file yang pribadi dan rahasia ke dalam penyimpanan cloud publik (Google Drive dan Dropbox sharing).", reverse: false },
-            { dim: "A", text: "Saya meninjau terlebih dahulu dokumen yang akan diupload ke dalam cloud publik (Google Drive dan Dropbox sharing).", reverse: false },
-            { dim: "B", text: "Saya dapat dengan bebas mengupload dokumen apapun ke dalam cloud sharing (Google Drive dan Dropbox sharing).", reverse: true }
+            { dim: "A", text: "Meninjau dahulu dokumen yang akan diupload ke dalam cloud publik (Google Drive dan DropBox sharing) adalah hal yang baik.", reverse: false },
+            { dim: "B", text: "Selama ini saya sering mengupload dokumen apapun ke dalam cloud sharing (Google Drive dan Drop Box sharing).", reverse: true }
           ]
         },
         {
           name: "Mengikuti tren viral",
           questions: [
             { dim: "K", text: "Mengikuti tren viral di media sosial (seperti challenge, filter AI, kuis kepribadian, atau face-swap) yang meminta akses data pribadi dapat menyebabkan kebocoran informasi sensitif.", reverse: false },
-            { dim: "A", text: "Saya berhati-hati dalam mengikuti tren viral di media sosial yang berpotensi mengekspos data pribadi maupun informasi kedinasan.", reverse: false },
-            { dim: "B", text: "Saya mengikuti tren viral di media sosial tanpa memeriksa terlebih dahulu apakah tren tersebut berpotensi menyebarkan data pribadi/sensitif.", reverse: true }
+            { dim: "A", text: "Mengikuti tren viral di media sosial yang berpotensi mengekspos data pribadi maupun informasi kedinasan adalah hal yang harus dihindari.", reverse: false },
+            { dim: "B", text: "Saya sering mengikuti tren viral di media sosial tanpa memeriksa dahulu apakah tren tersebut berpotensi menyebarkan data pribadi/sensitif.", reverse: true }
           ]
         }
       ]
@@ -236,7 +228,7 @@ window.HAISQ_DATA = {
           questions: [
             { dim: "K", text: "Saat bekerja di tempat umum, saya harus memastikan laptop saya berada di dekat saya.", reverse: false },
             { dim: "A", text: "Meninggalkan laptop tanpa pengawasan sebentar saat bekerja di kafe adalah hal yang aman.", reverse: true },
-            { dim: "B", text: "Saat bekerja di tempat umum, saya meninggalkan laptop saya tanpa pengawasan.", reverse: true }
+            { dim: "B", text: "Saat bekerja di tempat umum, saya sering meninggalkan laptop saya tanpa pengawasan.", reverse: true }
           ]
         },
         {
@@ -244,15 +236,15 @@ window.HAISQ_DATA = {
           questions: [
             { dim: "K", text: "Saya diperbolehkan mengirim file kerja sensitif melalui jaringan Wi-Fi publik.", reverse: true },
             { dim: "A", text: "Mengirim file kerja sensitif menggunakan jaringan Wi-Fi publik adalah hal yang berisiko.", reverse: false },
-            { dim: "B", text: "Saya mengirim file kerja sensitif menggunakan jaringan Wi-Fi publik.", reverse: true }
+            { dim: "B", text: "Saya biasa mengirim file kerja sensitif menggunakan jaringan Wi-Fi publik.", reverse: true }
           ]
         },
         {
           name: "Shoulder Surfing",
           questions: [
-            { dim: "K", text: "Saat mengerjakan dokumen sensitif, saya harus memastikan orang asing tidak dapat melihat layar laptop saya.", reverse: false },
+            { dim: "K", text: "Saat mengerjakan dokumen sensitif, saya harus memastikan orang asing tidak dapat melihat layar laptop/handphone saya.", reverse: false },
             { dim: "A", text: "Mengakses file kerja sensitif di laptop jika orang asing bisa melihat layar saya adalah hal yang berisiko.", reverse: false },
-            { dim: "B", text: "Saya memastikan bahwa orang asing tidak dapat melihat layar laptop jika saya mengerjakan dokumen sensitif.", reverse: false }
+            { dim: "B", text: "Saya selalu memastikan bahwa orang asing tidak dapat melihat layar laptop/handphone saya saat saya mengerjakan dokumen sensitif.", reverse: false }
           ]
         },
         {
@@ -260,7 +252,7 @@ window.HAISQ_DATA = {
           questions: [
             { dim: "K", text: "Saya boleh meminjamkan akun atau perangkat komputer kantor (komputer, laptop, tablet, handphone) kepada orang lain (seperti teman/anak/saudara).", reverse: true },
             { dim: "A", text: "Meminjamkan akun atau perangkat komputer kantor (komputer, laptop, tablet, handphone) kepada orang lain (seperti teman/anak/saudara) adalah hal yang berisiko.", reverse: false },
-            { dim: "B", text: "Saya meminjamkan akun atau perangkat komputer milik kantor (komputer, laptop, tablet, handphone) kepada orang lain (seperti teman/anak/saudara).", reverse: true }
+            { dim: "B", text: "Saya sering meminjamkan akun atau perangkat komputer milik kantor (komputer, laptop, tablet, handphone)  kepada orang lain (seperti teman/anak/saudara).", reverse: true }
           ]
         },
         {
@@ -274,16 +266,16 @@ window.HAISQ_DATA = {
         {
           name: "Membatasi izin aplikasi atau website dalam mengakses media",
           questions: [
-            { dim: "K", text: "Saya boleh memberikan izin aplikasi atau website untuk mengakses media, meskipun tidak berkaitan dengan fungsi aplikasi tersebut (memperbolehkan website undangan untuk mengakses kamera).", reverse: true },
-            { dim: "A", text: "Mengizinkan aplikasi atau website untuk mengakses media yang tidak diperlukan untuk fungsi aplikasi tersebut adalah hal yang berbahaya (tidak memperbolehkan website undangan untuk mengakses kamera).", reverse: false },
-            { dim: "B", text: "Saya meninjau dan membatasi izin yang saya berikan kepada aplikasi atau website (tidak memperbolehkan website undangan untuk mengakses kamera).", reverse: false }
+            { dim: "K", text: "Saya boleh memberikan izin aplikasi atau website untuk mengakses semua file dan media di perangkat saya, meskipun tidak berkaitan dengan fungsi aplikasi tersebut.", reverse: true },
+            { dim: "A", text: "Mengizinkan aplikasi atau website untuk mengakses semua file dan media di perangkat saya adalah hal yang berbahaya.", reverse: false },
+            { dim: "B", text: "Saya selalu meninjau dan membatasi izin yang saya berikan untuk setiap aplikasi yang saya install atau website yang saya akses.", reverse: false }
           ]
         },
         {
           name: "Mengaktifkan screen lock",
           questions: [
-            { dim: "K", text: "Saya memastikan bahwa layar komputer kerja saya telah dikunci dengan menggunakan password.", reverse: false },
-            { dim: "A", text: "Mematikan fitur kunci layar pada komputer kerja adalah hal yang aman.", reverse: true },
+            { dim: "K", text: "Saya harus memastikan layar komputer kerja saya telah dikunci dengan menggunakan password.", reverse: false },
+            { dim: "A", text: "Menon-aktifkan fitur kunci layar pada komputer kerja adalah hal yang aman.", reverse: true },
             { dim: "B", text: "Saya selalu menggunakan fitur kunci layar untuk komputer kerja saya agar aman.", reverse: false }
           ]
         }
@@ -296,9 +288,9 @@ window.HAISQ_DATA = {
         {
           name: "Menempati area yang aman saat bekerja",
           questions: [
-            { dim: "K", text: "Saya boleh mendiskusikan mengenai pekerjaan yang sensitif di area mana pun saat di kantor maupun di luar kantor.", reverse: true },
-            { dim: "A", text: "Saya mengetahui batasan perilaku (sadar diri untuk tidak membicarakan masalah pekerjaan yang sensitif) saat bekerja di kantor maupun di luar kantor.", reverse: false },
-            { dim: "B", text: "Saya mengikuti aturan keamanan di luar maupun di dalam tempat kerja saya untuk tidak mendiskusikan informasi sensitif di area yang dapat terdengar orang lain.", reverse: false }
+            { dim: "K", text: "Saya boleh mendiskusikan/mengerjakan pekerjaan yang sensitif/rahasia di area mana pun saat di kantor maupun di luar kantor.", reverse: true },
+            { dim: "A", text: "Memilih area bekerja yang sesuai dengan tingkat sensitifitas/kerahasiaan pekerjaan adalah hal yang baik untuk dikerjakan.", reverse: false },
+            { dim: "B", text: "Saya tidak pernah mendiskusikan/mengerjakan pekerjaan yang sensitif/rahasia di area publik.", reverse: false }
           ]
         },
         {
@@ -306,23 +298,23 @@ window.HAISQ_DATA = {
           questions: [
             { dim: "K", text: "Sebagai admin, memberikan akses masuk ke sistem/jaringan/server kepada orang yang tidak dikenal atau tanpa verifikasi identitas dan otorisasi resmi dapat menyebabkan penyusupan, kebocoran data, atau serangan siber.", reverse: false },
             { dim: "A", text: "Memberikan akses masuk kepada orang yang mengaku dari pihak internal maupun eksternal tanpa verifikasi identitas adalah hal yang wajar dilakukan demi kecepatan pekerjaan.", reverse: true },
-            { dim: "B", text: "Saya memverifikasi identitas terlebih dahulu sebelum memberikan akses masuk ke sistem/jaringan/server yang saya kelola.", reverse: false }
+            { dim: "B", text: "Saya selalu memverifikasi identitas terlebih dahulu sebelum memberikan akses masuk ke sistem/jaringan/server yang saya kelola.", reverse: false }
           ]
         },
         {
           name: "Memantau keamanan melalui CCTV",
           questions: [
-            { dim: "K", text: "Area tanpa kamera pengawas (CCTV) dan semacamnya bukanlah risiko keamanan.", reverse: true },
-            { dim: "A", text: "Penting untuk lebih waspada dan melaporkan aktivitas mencurigakan di area yang kurang memiliki pengawasan yang memadai (tidak memiliki CCTV).", reverse: false },
-            { dim: "B", text: "Saya melaporkan aktivitas mencurigakan yang dilakukan individu atau kelompok di area terbatas yang tidak memiliki CCTV.", reverse: false }
+            { dim: "K", text: "Area tanpa kamera pengawas (cctv) atau tidak memasang alat deteksi penyusup bukanlah risiko keamanan bagi sistem/lingkungan saya.", reverse: true },
+            { dim: "A", text: "Memasang dan selalu memantau CCTV dan alat deteksi penyusup di sistem/lingkungan yang menjadi tanggung-jawab saya adalah hal yang harus saya lakukan sebagai admin sistem.", reverse: false },
+            { dim: "B", text: "Saya selalu memantau CCTV dan alat deteksi penyusup di sistem/lingkungan saya.", reverse: false }
           ]
         },
         {
           name: "Menggunakan antivirus",
           questions: [
             { dim: "K", text: "Mengaktifkan antivirus dan selalu memperbaruinya pada perangkat kerja penting untuk melindungi data dari malware, ransomware, dan program berbahaya lainnya.", reverse: false },
-            { dim: "A", text: "Antivirus harus selalu diaktifkan pada perangkat kerja, meskipun terkadang dianggap memperlambat kinerja komputer.", reverse: false },
-            { dim: "B", text: "Saya menonaktifkan antivirus di perangkat kerja ketika dirasa mengganggu kinerja komputer.", reverse: true }
+            { dim: "A", text: "Selalu mengaktifkan Antivirus pada perangkat kerja adalah hal yang lebih baik, meskipun kadang memperlambat kinerja komputer.", reverse: false },
+            { dim: "B", text: "Saya selalu menonaktifkan antivirus di perangkat kerja ketika dirasa mengganggu kinerja komputer.", reverse: true }
           ]
         },
         {
@@ -330,7 +322,7 @@ window.HAISQ_DATA = {
           questions: [
             { dim: "K", text: "Memasang pembaruan (update/patch) keamanan sistem operasi dan aplikasi penting untuk menutup celah keamanan yang dapat dimanfaatkan penyerang.", reverse: false },
             { dim: "A", text: "Pembaruan keamanan sistem dan aplikasi harus segera dipasang meskipun mengganggu pekerjaan untuk sementara waktu.", reverse: false },
-            { dim: "B", text: "Saya menunda atau mengabaikan notifikasi pembaruan (update/patch) keamanan pada perangkat kerja saya.", reverse: true }
+            { dim: "B", text: "Selama ini saya sering menunda atau mengabaikan notifikasi pembaruan (update/patch) keamanan pada perangkat kerja saya.", reverse: true }
           ]
         }
       ]
@@ -342,9 +334,9 @@ window.HAISQ_DATA = {
         {
           name: "Memusnahkan dokumen cetak yang sensitif",
           questions: [
-            { dim: "K", text: "Dokumen fisik yang berisikan informasi sensitif dapat dibuang dengan cara yang sama seperti dokumen tidak sensitif.", reverse: true },
+            { dim: "K", text: "Dokumen fisik yang berisikan informasi sensitif boleh dibuang dengan cara yang sama seperti dokumen tidak sensitif.", reverse: true },
             { dim: "A", text: "Membuang dokumen cetak sensitif ke tempat sampah adalah hal yang aman.", reverse: true },
-            { dim: "B", text: "Saat dokumen cetak sensitif perlu dibuang, saya memastikan bahwa dokumen tersebut dirobek atau dihancurkan.", reverse: false }
+            { dim: "B", text: "Saat dokumen cetak sensitif perlu dibuang, saya selalu memastikan bahwa dokumen tersebut dirobek atau dihancurkan.", reverse: false }
           ]
         },
         {
@@ -352,7 +344,7 @@ window.HAISQ_DATA = {
           questions: [
             { dim: "K", text: "Jika saya menemukan USB di tempat umum, saya tidak seharusnya mencolokkannya ke perangkat milik saya.", reverse: false },
             { dim: "A", text: "Jika saya menemukan USB di tempat umum, tidak akan terjadi hal buruk jika mencolokkannya ke perangkat saya.", reverse: true },
-            { dim: "B", text: "Saya tidak akan mencolokkan USB yang ditemukan di tempat umum ke perangkat saya.", reverse: false }
+            { dim: "B", text: "Saya tidak pernah mencolokkan USB yang ditemukan di tempat umum ke perangkat saya.", reverse: false }
           ]
         },
         {
@@ -360,7 +352,7 @@ window.HAISQ_DATA = {
           questions: [
             { dim: "K", text: "Saya diperbolehkan meninggalkan dokumen cetak yang berisi informasi sensitif di meja saya untuk waktu yang lama.", reverse: true },
             { dim: "A", text: "Meninggalkan dokumen cetak yang berisi informasi sensitif di meja adalah hal yang berisiko.", reverse: false },
-            { dim: "B", text: "Saya meninggalkan dokumen fisik yang berisi informasi sensitif di meja saya untuk waktu yang lama.", reverse: true }
+            { dim: "B", text: "Saya sering meninggalkan dokumen fisik yang berisi informasi sensitif di meja saya untuk waktu yang lama.", reverse: true }
           ]
         },
         {
@@ -374,9 +366,9 @@ window.HAISQ_DATA = {
         {
           name: "Menghapus data secara permanen",
           questions: [
-            { dim: "K", text: "Menghapus data secara permanen saat perangkat akan dibuang atau diganti adalah hal yang penting.", reverse: false },
-            { dim: "A", text: "Saat akan mengganti perangkat, maka data harus dihapus secara permanen terlebih dahulu.", reverse: false },
-            { dim: "B", text: "Saya tidak perlu menghapus data secara permanen saat perangkat akan dibuang atau diganti.", reverse: true }
+            { dim: "K", text: "Menghapus data secara permanen saat perangkat akan dibuang atau diganti adalah hal yang harus dilakukan.", reverse: false },
+            { dim: "A", text: "Saat akan mengganti perangkat, sebaiknya data dihapus secara permanen terlebih dahulu.", reverse: false },
+            { dim: "B", text: "Selama ini saya tidak menghapus data secara permanen saat perangkat akan dibuang atau diganti.", reverse: true }
           ]
         },
         {
@@ -390,7 +382,7 @@ window.HAISQ_DATA = {
         {
           name: "Perlindungan data pribadi",
           questions: [
-            { dim: "K", text: "Data pribadi (alamat, nomor telepon, biometrik) memerlukan perlindungan dan tidak boleh disebarkan sembarangan.", reverse: false },
+            { dim: "K", text: "Data pribadi (alamat, nomor telepon, biometrik) wajib dilindungi dan tidak boleh disebarkan sembarangan.", reverse: false },
             { dim: "A", text: "Membagikan data pribadi (baik milik saya, keluarga, maupun warga) di media sosial atau grup WhatsApp adalah hal yang wajar selama tidak berniat merugikan.", reverse: true },
             { dim: "B", text: "Saya mempertimbangkan jenis dan sensitivitas data pribadi sebelum membagikan atau mengunggahnya di media sosial maupun kanal komunikasi lain.", reverse: false }
           ]
@@ -406,7 +398,7 @@ window.HAISQ_DATA = {
           questions: [
             { dim: "K", text: "Jika saya melihat seseorang berperilaku mencurigakan di tempat kerja, saya harus melaporkannya.", reverse: false },
             { dim: "A", text: "Tidak akan terjadi hal buruk jika saya mengabaikan seseorang yang berperilaku mencurigakan di tempat kerja.", reverse: true },
-            { dim: "B", text: "Jika saya melihat seseorang berperilaku mencurigakan di tempat kerja, saya akan melakukan sesuatu tentang hal itu.", reverse: false }
+            { dim: "B", text: "Jika saya melihat seseorang berperilaku mencurigakan di tempat kerja, saya biasanya melakukan sesuatu tentang hal itu.", reverse: false }
           ]
         },
         {
@@ -414,7 +406,7 @@ window.HAISQ_DATA = {
           questions: [
             { dim: "K", text: "Saya tidak boleh mengabaikan perilaku keamanan yang buruk dari rekan kerja saya.", reverse: false },
             { dim: "A", text: "Tidak akan terjadi hal buruk jika saya mengabaikan perilaku keamanan yang buruk dari rekan kerja.", reverse: true },
-            { dim: "B", text: "Jika saya menyadari rekan kerja mengabaikan aturan keamanan, saya tidak akan mengambil tindakan apa pun.", reverse: true }
+            { dim: "B", text: "Jika saya menyadari rekan kerja mengabaikan aturan keamanan, selama ini saya tidak mengambil tindakan apa pun.", reverse: true }
           ]
         },
         {
@@ -422,7 +414,7 @@ window.HAISQ_DATA = {
           questions: [
             { dim: "K", text: "Melaporkan insiden keamanan adalah hal yang bersifat opsional.", reverse: true },
             { dim: "A", text: "Mengabaikan insiden keamanan sekecil apapun merupakan hal yang berisiko.", reverse: false },
-            { dim: "B", text: "Saya akan melaporkan segala jenis insiden keamanan.", reverse: false }
+            { dim: "B", text: "Selama ini saya selalu melaporkan segala jenis insiden keamanan.", reverse: false }
           ]
         }
       ]
@@ -434,7 +426,7 @@ window.HAISQ_DATA = {
         {
           name: "Mempelajari insiden keamanan informasi",
           questions: [
-            { dim: "K", text: "Tidak perlu meninjau ulang apa yang terjadi setelah terjadi insiden keamanan informasi (mengabaikan insiden keamanan IT karena urusan bidang IT saja).", reverse: true },
+            { dim: "K", text: "Saya tidak perlu meninjau ulang apa yang terjadi setiap insiden keamanan informasi  di kantor saya.", reverse: true },
             { dim: "A", text: "Penting untuk meninjau dan belajar dari insiden keamanan agar kesalahan yang sama tidak terulang.", reverse: false },
             { dim: "B", text: "Setelah insiden keamanan, saya meluangkan waktu untuk memahami apa yang salah dan menerapkan pelajaran yang diperoleh untuk memperbaiki perilaku saya ke depannya.", reverse: false }
           ]
@@ -450,9 +442,9 @@ window.HAISQ_DATA = {
         {
           name: "Memahami peraturan tentang kebijakan keamanan informasi",
           questions: [
-            { dim: "K", text: "Memahami kebijakan keamanan informasi yang berlaku di instansi (seperti SOP keamanan, Pergub/Kepgub SMKI, dan regulasi Pelindungan Data Pribadi) merupakan hal penting bagi setiap ASN.", reverse: false },
-            { dim: "A", text: "Sebagai ASN, saya wajib mempelajari dan mematuhi kebijakan keamanan informasi yang ditetapkan instansi.", reverse: false },
-            { dim: "B", text: "Saya membaca dan berupaya memahami kebijakan keamanan informasi (SOP, Pergub/Kepgub SMKI, aturan PDP) yang berlaku di instansi tempat saya bekerja.", reverse: false }
+            { dim: "K", text: "Memahami kebijakan keamanan informasi yang berlaku di instansi (seperti SOP keamanan, Pergub/Kepgub SMKI, dan regulasi Pelindungan Data Pribadi) wajib bagi setiap ASN.", reverse: false },
+            { dim: "A", text: "Sebagai ASN, mempelajari dan mematuhi kebijakan keamanan informasi yang ditetapkan instansi adalah hal yang baik..", reverse: false },
+            { dim: "B", text: "Saya selalu berupaya memahami kebijakan keamanan informasi (SOP, Pergub/Kepgub SMKI, aturan PDP) yang berlaku di instansi tempat saya bekerja.", reverse: false }
           ]
         }
       ]
